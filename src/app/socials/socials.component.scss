@@ -1,0 +1,19 @@
+.socials {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+:host.mobile {
+  .socials {
+    img {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

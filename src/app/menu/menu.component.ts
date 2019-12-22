@@ -3,13 +3,35 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'ba-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  menu = [
+    {
+      label: 'Банкноты',
+      link: '',
+    },
+    {
+      label: 'Inspiration',
+      link: '',
+    },
+    {
+      label: 'Блог',
+      link: '',
+    },
+    {
+      label: 'Контакты',
+      link: '',
+    },
+    {
+      label: 'О Нас',
+      link: '',
+    },
+  ]
+
+  ngOnInit() { }
 
 }

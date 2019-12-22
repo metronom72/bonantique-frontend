@@ -1,6 +1,24 @@
-<header>
-  <ba-logo></ba-logo>
-  <ba-menu></ba-menu>
-  <ba-socials></ba-socials>
-  Header works!
-</header>
+<div class="header-wrapper">
+  <header class="header" [class.mobile]="isMobile">
+    <div class="left-wrapper">
+      <div *ngIf="isMobile" class="menu-trigger">
+        <i *ngIf="isOpened" (click)="onCloseMenu()">
+          <img src="assets/images/times.svg" />
+        </i>
+        <i *ngIf="!isOpened" (click)="onOpenMenu()">
+          <img src="assets/images/burger.svg" />
+        </i>
+      </div>
+      <ba-logo></ba-logo>
+      <ba-menu *ngIf="!isMobile"></ba-menu>
+    </div>
+    <div class="right-wrapper">
+      <div class="socials-wrapper">
+        <ba-socials [class.mobile]="isMobile"></ba-socials>
+      </div>
+    </div>
+  </header>
+  <div *ngIf="isMobile && isOpened" class="menu-wrapper">
+    <ba-menu [class.mobile]="isMobile"></ba-menu>
+  </div>
+</div>

@@ -1,1 +1,7 @@
-<p>socials works!</p>
+<div class="socials-wrapper">
+  <ul class="socials">
+    <li *ngFor="let social of socials">
+      <img [src]="social.icon" />
+    </li>
+  </ul>
+</div>

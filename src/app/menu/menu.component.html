@@ -1,1 +1,7 @@
-<p>menu works!</p>
+<nav class="menu-wrapper">
+  <ul class="menu">
+    <li class="menu-item" *ngFor="let item of menu">
+      {{item.label}}
+    </li>
+  </ul>
+</nav>
