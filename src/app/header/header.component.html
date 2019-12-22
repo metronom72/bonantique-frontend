@@ -13,12 +13,28 @@
       <ba-menu *ngIf="!isMobile"></ba-menu>
     </div>
     <div class="right-wrapper">
-      <div class="socials-wrapper">
+      <div *ngIf="!isMobile" class="socials-wrapper">
         <ba-socials [class.mobile]="isMobile"></ba-socials>
+      </div>
+      <div>
+        <ba-header-basket></ba-header-basket>
       </div>
     </div>
   </header>
   <div *ngIf="isMobile && isOpened" class="menu-wrapper">
     <ba-menu [class.mobile]="isMobile"></ba-menu>
+    <div class="socials-wrapper">
+      <ba-socials [class.mobile]="isMobile"></ba-socials>
+      <div class="document">
+        <span>
+          Договор оферты
+        </span>
+      </div>
+      <div class="document">
+        <span>
+          Пользовательское соглашение
+        </span>
+      </div>
+    </div>
   </div>
 </div>

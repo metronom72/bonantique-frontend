@@ -1,0 +1,35 @@
+.header-basket {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.header-basket-wrapper {
+  position: relative;
+}
+.header-basket-count {
+  padding: 2px 2px;
+  background-color: #CA9B22;
+  border-radius: 3px;
+  font-size: 12px;
+  position: absolute;
+  top: -6px;
+  right: 0px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:host.mobile {
+  .socials {
+    img {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

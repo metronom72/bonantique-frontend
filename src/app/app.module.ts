@@ -7,6 +7,7 @@ import { LogoComponent } from './logo/logo.component';
 import { MenuComponent } from './menu/menu.component';
 import { SocialsComponent } from './socials/socials.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HeaderBasketComponent } from './header-basket/header-basket.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     HeaderComponent,
     LogoComponent,
     MenuComponent,
-    SocialsComponent
+    SocialsComponent,
+    HeaderBasketComponent
   ],
   imports: [
     BrowserModule,
