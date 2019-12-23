@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #111111;
+  color: #EEEEEE;
+  position: relative;
+}
+.subscription-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-width: 900px;
+  max-width: 1440px;
+  margin: 0 auto;
+  >div {
+    width: 100%;
+    text-align: center;
+  }
+}
+.header {
+  font-size: 36px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.description {
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  line-height: 20px;
+}

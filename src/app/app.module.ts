@@ -8,6 +8,9 @@ import { MenuComponent } from './menu/menu.component';
 import { SocialsComponent } from './socials/socials.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HeaderBasketComponent } from './header-basket/header-basket.component';
+import { FooterComponent } from './footer/footer.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
+import { SubscriptionDescriptionComponent } from './subscription-description/subscription-description.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HeaderBasketComponent } from './header-basket/header-basket.component';
     LogoComponent,
     MenuComponent,
     SocialsComponent,
-    HeaderBasketComponent
+    HeaderBasketComponent,
+    FooterComponent,
+    SubscribeComponent,
+    SubscriptionDescriptionComponent
   ],
   imports: [
     BrowserModule,
