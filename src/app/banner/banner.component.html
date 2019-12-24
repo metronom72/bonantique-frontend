@@ -2,23 +2,22 @@
   class="wrapper"
   [class.vertical]="type === 'VERTICAL'"
   [class.horizontal]="type === 'HORIZONTAL'"
+  [class.mobile]="isMobile"
 >
-  <div class="banner" [id]="id">
-    <a [href]="link">
-      <div class="image">
-        <img [src]="frontImage" />
+  <a [href]="link" class="banner" [id]="id">
+    <div *ngIf="frontImage" class="image">
+      <img [src]="frontImage" class="frontImage" />
+    </div>
+    <div class="content">
+      <header class="header" *ngIf="header">
+        {{header}}
+      </header>
+      <div class="subheader" *ngIf="subheader">
+        {{subheader}}
       </div>
-      <span class="content">
-        <header class="header" *ngIf="header">
-          {{header}}
-        </header>
-        <div class="subheader" *ngIf="subheader">
-          {{subheader}}
-        </div>
-        <div class="raw" *ngIf="raw">
-          <div [innerHTML]="raw"></div>
-        </div>
-      </span>
-    </a>
-  </div>
+      <div class="raw" *ngIf="raw">
+        <div [innerHTML]="raw"></div>
+      </div>
+    </div>
+  </a>
 </div>

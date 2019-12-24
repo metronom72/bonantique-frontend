@@ -1,0 +1,14 @@
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #111111;
+  color: #EEEEEE;
+  position: relative;
+}
+.content {
+  width: 100%;
+  min-width: 320px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
