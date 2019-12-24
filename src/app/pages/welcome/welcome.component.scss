@@ -1,4 +1,12 @@
 .feature-products {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.articles {
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;

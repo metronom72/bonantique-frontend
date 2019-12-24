@@ -16,6 +16,7 @@ import { BannerComponent } from './banner/banner.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
+import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 
 const appRoutes: Routes = [
   {
@@ -113,7 +114,8 @@ const appRoutes: Routes = [
     SubscriptionDescriptionComponent,
     BannerComponent,
     WelcomeComponent,
-    ProductPreviewComponent
+    ProductPreviewComponent,
+    ArticlePreviewComponent
   ],
   imports: [
     BrowserModule,

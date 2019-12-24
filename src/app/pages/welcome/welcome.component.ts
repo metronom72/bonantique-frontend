@@ -13,7 +13,8 @@ const generateArticle = () => ({
   title: 'Название статьи',
   link: '#',
   author: 'Константин Константинопольский',
-  createdAt: '12.12.2019',
+  createdAt: new Date().toISOString(),
+  preview: 'https://i.pinimg.com/564x/c2/88/9b/c2889b6fde61383c1e05855a43577944.jpg',
 });
 
 const generateReview = () => ({

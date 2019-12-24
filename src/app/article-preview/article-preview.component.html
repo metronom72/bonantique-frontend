@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <a [href]="article.link" class="article">
+    <div class="image">
+      <img [src]="article.preview" class="article-preview" />
+    </div>
+    <div class="info">
+      <header class="header">
+        {{article.title}}
+      </header>
+      <div class="author">
+        {{article.author}}
+      </div>
+      <div class="created-at">
+        {{article.createdAt | date: 'dd.MM.yyyy'}}
+      </div>
+    </div>
+  </a>
+</div>

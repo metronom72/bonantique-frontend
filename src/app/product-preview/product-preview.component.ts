@@ -14,7 +14,7 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
     cost: number
     previousCost: number
     image: string
-  }
+  };
 
   countdown: {days: number, hours: number} | null = null;
   countdownId;
@@ -33,18 +33,19 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
   }
 
   startCountdown = () => {
-    console.log(this.product);
     if (!this.product || !this.product.expireAt) {
       return;
     }
 
     const current = new Date();
     const dateDiff = (new Date(this.product.expireAt) as any) - (current as any);
-    const diff = dateDiff / (1000 * 60 * 60 * 24);
-    const days = Math.abs(Math.floor(diff));
-    const hours = Math.abs(Math.floor(24 * (diff - Math.floor(diff))));
+    if (dateDiff > 0) {
+      const diff = dateDiff / (1000 * 60 * 60 * 24);
+      const days = Math.abs(Math.floor(diff));
+      const hours = Math.abs(Math.floor(24 * (diff - Math.floor(diff))));
 
-    this.countdown = {days, hours};
+      this.countdown = {days, hours};
+    }
   }
 
 }
