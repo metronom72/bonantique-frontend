@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   public isOpened = false;
 
-  constructor(public breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   onOpenMenu = () => {
     this.isOpened = true;

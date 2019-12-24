@@ -11,6 +11,7 @@ import { HeaderBasketComponent } from './header-basket/header-basket.component';
 import { FooterComponent } from './footer/footer.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { SubscriptionDescriptionComponent } from './subscription-description/subscription-description.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SubscriptionDescriptionComponent } from './subscription-description/sub
   ],
   imports: [
     BrowserModule,
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

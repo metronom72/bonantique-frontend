@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'ba-footer',
@@ -9,8 +10,20 @@ export class FooterComponent implements OnInit {
 
   public phone = '+7 911 812 2653'
 
-  constructor() { }
+  public isMobile: boolean;
 
-  ngOnInit() { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe(['(max-width: 820px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.isMobile = true;
+        } else {
+          this.isMobile = false;
+        }
+      });
+  }
 
 }
