@@ -3,5 +3,8 @@
   <ba-product-preview
     *ngFor="let product of featuredProducts; index as i"
     [product]="product"
+    [class.mobile]="isMobile"
+    [class.tablet]="isTablet"
+    [class.full-width]="i % 2 === 0 && i !== 0"
   ></ba-product-preview>
 </div>

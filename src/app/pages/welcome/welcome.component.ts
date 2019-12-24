@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 const generateProduct = () => ({
   title: 'Хрущевские фантики',
@@ -35,15 +36,15 @@ const generateReview = () => ({
 })
 export class WelcomeComponent implements OnInit {
 
-  products = [generateProduct(), generateProduct(), generateProduct(), generateProduct(), generateProduct()];
+  public products = [generateProduct(), generateProduct(), generateProduct(), generateProduct(), generateProduct()];
 
-  featuredProducts = [generateProduct(), generateProduct(), generateProduct()];
+  public featuredProducts = [generateProduct(), generateProduct(), generateProduct()];
 
-  articles = [generateArticle(), generateArticle(), generateArticle(), generateArticle(), generateArticle()];
+  public articles = [generateArticle(), generateArticle(), generateArticle(), generateArticle(), generateArticle()];
 
-  reviews = [generateReview(), generateReview(), generateReview()];
+  public reviews = [generateReview(), generateReview(), generateReview()];
 
-  inspirations = [
+  public inspirations = [
     'https://i.pinimg.com/564x/b1/f2/15/b1f2152cc05338e26944f8b76a55afc4.jpg',
     'https://i.pinimg.com/564x/24/12/62/241262e1830e01246e3503f683dc9ed8.jpg',
     'https://i.pinimg.com/564x/77/12/ce/7712ce1b4d3c8d6cec281eca03f17274.jpg',
@@ -54,8 +55,34 @@ export class WelcomeComponent implements OnInit {
     'https://i.pinimg.com/564x/a4/9c/eb/a49ceb195aba7914af88d4dc3bb57b5e.jpg',
   ];
 
-  constructor() { }
+  public isTablet: boolean;
+  public isMobile: boolean;
 
-  ngOnInit() { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe(['(max-width: 1024px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.isTablet = true;
+          this.isMobile = false;
+        } else {
+          this.isTablet = false;
+          this.isMobile = false;
+        }
+      });
+    this.breakpointObserver
+      .observe(['(max-width: 768px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.isMobile = true;
+          this.isTablet = false;
+        } else {
+          this.isMobile = false;
+          this.isTablet = false;
+        }
+      });
+  }
 
 }
