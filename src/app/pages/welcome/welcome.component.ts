@@ -3,7 +3,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 const generateProduct = () => ({
   title: 'Хрущевские фантики',
-  expireAt: new Date().toISOString(),
+  expireAt: new Date('01-12-2020').getTime(),
   cost: 10000,
   previousCost: 12000,
   image: 'https://i.pinimg.com/564x/b2/f5/37/b2f537117590dc580fa6bcaf654bb808.jpg',
@@ -13,7 +13,7 @@ const generateArticle = () => ({
   title: 'Название статьи',
   link: '#',
   author: 'Константин Константинопольский',
-  createdAt: new Date().toISOString(),
+  createdAt: new Date().getTime(),
   preview: 'https://i.pinimg.com/564x/c2/88/9b/c2889b6fde61383c1e05855a43577944.jpg',
 });
 
@@ -27,6 +27,7 @@ const generateReview = () => ({
   avatar: 'https://i.pinimg.com/564x/fe/82/5b/fe825bd1d90e874265f464bdc59b263a.jpg',
   name: 'Aome Author Name',
   packId: 13,
+  // tslint:disable-next-line:max-line-length
   review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
 });
 

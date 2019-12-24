@@ -1,21 +1,44 @@
 <ba-banner></ba-banner>
-<div class="feature-products">
-  <ba-product-preview
-    *ngFor="let product of featuredProducts; index as i"
-    [product]="product"
-    [class.mobile]="isMobile"
-    [class.tablet]="isTablet"
-    [class.full-width]="i === featuredProducts.length - 1 && featuredProducts.length % 2 === 1"
-  ></ba-product-preview>
-</div>
-<div class="articles">
-  <ba-article-preview
-    *ngFor="let article of articles; index as i"
-    [article]="article"
-    [class.row-2n]="i === 0 || i === 1"
-    [class.row-3n]="i !== 0 && i !== 1"
-    [class.mobile]="isMobile"
-    [class.tablet]="isTablet"
-    [class.full-width]="i === articles.length - 1 && articles.length % 2 === 1"
-  ></ba-article-preview>
-</div>
+<section class="section ">
+  <div class="feature-products">
+    <ba-product-preview
+      *ngFor="let product of featuredProducts; index as i"
+      [product]="product"
+      [class.mobile]="isMobile"
+      [class.tablet]="isTablet"
+      [class.full-width]="i === featuredProducts.length - 1 && featuredProducts.length % 2 === 1"
+    ></ba-product-preview>
+  </div>
+</section>
+<section class="section">
+  <header class="header">
+    Блог
+  </header>
+  <div class="articles">
+    <ba-article-preview
+      *ngFor="let article of articles; index as i"
+      [article]="article"
+      [class.row-2n]="i === 0 || i === 1"
+      [class.row-3n]="i !== 0 && i !== 1"
+      [class.mobile]="isMobile"
+      [class.tablet]="isTablet"
+      [class.full-width]="i === articles.length - 1 && articles.length % 2 === 1"
+    ></ba-article-preview>
+  </div>
+</section>
+<section class="section">
+  <header class="header">
+    Популярное сегодня
+  </header>
+  <div class="feature-products">
+    <ba-product-preview
+      *ngFor="let product of products; index as i"
+      [product]="product"
+      [class.row-2n]="i === 0 || i === 1"
+      [class.row-3n]="i !== 0 && i !== 1"
+      [class.mobile]="isMobile"
+      [class.tablet]="isTablet"
+      [class.full-width]="i % 3 === 2 && i !== 0"
+    ></ba-product-preview>
+  </div>
+</section>

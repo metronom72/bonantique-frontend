@@ -14,6 +14,24 @@
   width: 100%;
   min-width: 100%;
 }
+:host.row-2n {
+  width: 50%;
+  &.mobile {
+    width: 100%;
+  }
+}
+:host.row-3n {
+  width: calc(100%/3);
+  &.tablet {
+    width: 50%;
+    &.full-width {
+      width: 100%;
+    }
+  }
+  &.mobile {
+    width: 100%;
+  }
+}
 .wrapper {
   width: 100%;
   display: flex;

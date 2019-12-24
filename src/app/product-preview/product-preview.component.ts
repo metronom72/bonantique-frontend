@@ -10,7 +10,7 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
   @Input()
   product: {
     title: string
-    expireAt: string
+    expireAt: number
     cost: number
     previousCost: number
     image: string
@@ -37,12 +37,13 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const current = new Date();
-    const dateDiff = (new Date(this.product.expireAt) as any) - (current as any);
+    const current = new Date().getTime();
+    const dateDiff = this.product.expireAt - current;
+    console.log(this.product.expireAt, current, dateDiff)
     if (dateDiff > 0) {
       const diff = dateDiff / (1000 * 60 * 60 * 24);
-      const days = Math.abs(Math.floor(diff));
-      const hours = Math.abs(Math.floor(24 * (diff - Math.floor(diff))));
+      const days = Math.floor(diff);
+      const hours = Math.floor(24 * (diff - days));
 
       this.countdown = {days, hours};
     }
