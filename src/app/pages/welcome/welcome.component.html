@@ -1,2 +1,7 @@
 <ba-banner></ba-banner>
-<ba-product-preview *ngFor="let product of featuredProducts" [product]="product"></ba-product-preview>
+<div class="feature-products">
+  <ba-product-preview
+    *ngFor="let product of featuredProducts; index as i"
+    [product]="product"
+  ></ba-product-preview>
+</div>

@@ -32,8 +32,6 @@ export class SubscribeComponent implements OnInit {
 
     const result = control.invalid && control.touched;
 
-    console.log(control, result);
-
     return result;
   }
 

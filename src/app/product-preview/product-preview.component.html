@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="iamge">
+  <div class="image">
     <img [src]="product.image" class="product-image" />
   </div>
   <div class="info">
@@ -8,19 +8,19 @@
     </header>
     <div class="content">
       <div class="expiration">
-        <div class="expiration-haeder">
+        <div *ngIf="countdown" class="expiration-header">
           Не забудьте купить
         </div>
-        <div class="expiration-countdown">
-          <span>15 дней</span><span>15 часов</span>
+        <div *ngIf="countdown" class="expiration-countdown">
+          <span class="days">{{countdown.days}} дней</span>&nbsp;<span class="hours">{{countdown.hours}} часов</span>
         </div>
       </div>
       <div class="costs">
         <div class="current-cost">
-          {{product.cost}}
+          {{product.cost}}&nbsp;РУБ
         </div>
         <div class="outdated-cost">
-          {{product.previousCost}}
+          {{product.previousCost}}&nbsp;РУБ
         </div>
       </div>
     </div>
