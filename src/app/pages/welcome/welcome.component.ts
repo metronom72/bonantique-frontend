@@ -5,6 +5,7 @@ const generateProduct = () => ({
   expireAt: '15.02.2020',
   cost: 10000,
   previousCost: 12000,
+  image: 'https://i.pinimg.com/564x/b2/f5/37/b2f537117590dc580fa6bcaf654bb808.jpg',
 });
 
 const generateArticle = () => ({

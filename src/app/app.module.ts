@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BannerComponent } from './banner/banner.component';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { ProductPreviewComponent } from './product-preview/product-preview.component';
 
 const appRoutes: Routes = [
   {
@@ -111,7 +112,8 @@ const appRoutes: Routes = [
     SubscribeComponent,
     SubscriptionDescriptionComponent,
     BannerComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProductPreviewComponent
   ],
   imports: [
     BrowserModule,
