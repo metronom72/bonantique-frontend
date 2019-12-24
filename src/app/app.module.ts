@@ -13,6 +13,91 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { SubscriptionDescriptionComponent } from './subscription-description/subscription-description.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BannerComponent } from './banner/banner.component';
+import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: WelcomeComponent,
+  },
+  // {
+  //   path: 'packs/new',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'packs',
+  //   component: PacksComponent,
+  // },
+  // {
+  //   path: 'packs/:id',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'packs/:id',
+  //   component: PackComponent,
+  // },
+  //
+  // {
+  //   path: 'bonds/new',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'bonds',
+  //   component: PacksComponent,
+  // },
+  // {
+  //   path: 'bonds/:id',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'bonds/:id',
+  //   component: PackComponent,
+  // },
+  //
+  // {
+  //   path: 'inspirations/new',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'inspirations',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'inspirations/:id',
+  //   component: PackComponent,
+  // },
+  //
+  // {
+  //   path: 'orders/new',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'orders',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'orders/:id',
+  //   component: PackComponent,
+  // },
+  //
+  // {
+  //   path: 'login',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'logout',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'resetpassword',
+  //   component: PackComponent,
+  // },
+  // {
+  //   path: 'confirmations/email',
+  //   component: PackComponent,
+  // },
+];
 
 @NgModule({
   declarations: [
@@ -25,12 +110,17 @@ import { BannerComponent } from './banner/banner.component';
     FooterComponent,
     SubscribeComponent,
     SubscriptionDescriptionComponent,
-    BannerComponent
+    BannerComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     LayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
