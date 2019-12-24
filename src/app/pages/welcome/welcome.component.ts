@@ -62,25 +62,19 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(max-width: 1024px)'])
+      .observe(['(max-width: 1024px)', '(max-width: 768px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
-          this.isTablet = true;
-          this.isMobile = false;
+          if (state.breakpoints['(max-width: 1024px)'] && state.breakpoints['(max-width: 768px)']) {
+            this.isTablet = false;
+            this.isMobile = true;
+          } else if (!state.breakpoints['(max-width: 768px)'] && state.breakpoints['(max-width: 1024px)']) {
+            this.isTablet = true;
+            this.isMobile = false;
+          }
         } else {
           this.isTablet = false;
           this.isMobile = false;
-        }
-      });
-    this.breakpointObserver
-      .observe(['(max-width: 768px)'])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.isMobile = true;
-          this.isTablet = false;
-        } else {
-          this.isMobile = false;
-          this.isTablet = false;
         }
       });
   }
