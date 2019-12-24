@@ -1,0 +1,24 @@
+<div
+  class="wrapper"
+  [class.vertical]="type === 'VERTICAL'"
+  [class.horizontal]="type === 'HORIZONTAL'"
+>
+  <div class="banner" [id]="id">
+    <a [href]="link">
+      <div class="image">
+        <img [src]="frontImage" />
+      </div>
+      <span class="content">
+        <header class="header" *ngIf="header">
+          {{header}}
+        </header>
+        <div class="subheader" *ngIf="subheader">
+          {{subheader}}
+        </div>
+        <div class="raw" *ngIf="raw">
+          <div [innerHTML]="raw"></div>
+        </div>
+      </span>
+    </a>
+  </div>
+</div>

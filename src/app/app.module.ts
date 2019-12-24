@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { SubscriptionDescriptionComponent } from './subscription-description/subscription-description.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderBasketComponent,
     FooterComponent,
     SubscribeComponent,
-    SubscriptionDescriptionComponent
+    SubscriptionDescriptionComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
