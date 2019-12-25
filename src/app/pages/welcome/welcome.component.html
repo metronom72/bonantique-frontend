@@ -12,7 +12,8 @@
 </section>
 <section class="section">
   <header class="header">
-    Блог
+    <span>Блог</span>
+    <span>В блог</span>
   </header>
   <div class="articles">
     <ba-article-preview
@@ -28,7 +29,8 @@
 </section>
 <section class="section">
   <header class="header">
-    Популярное сегодня
+    <span>Популярное сегодня</span>
+    <span>В каталог</span>
   </header>
   <div class="products">
     <ba-product-preview
@@ -43,7 +45,7 @@
   </div>
 </section>
 <section class="section">
-  <header class="header">
+  <header class="header reviews-header">
     Последние отзывы
   </header>
   <div class="reviews">
@@ -53,5 +55,40 @@
       [class.mobile]="isMobile"
       [class.tablet]="isTablet"
     ></ba-review-preview>
+  </div>
+  <footer>
+    <a>Оставить отзыв</a>
+  </footer>
+</section>
+<section class="section">
+  <header class="header">
+    <span>ВДОХНОВЕНИЕ</span>
+    <span>Подробнее</span>
+  </header>
+  <div
+    class="inspirations-preview"
+     [class.mobile]="isMobile"
+     [class.tablet]="isTablet"
+  >
+    <ba-slider
+      [images]="inspirations"
+      [withArrows]="true"
+      [initialCurrent]="0"
+    ></ba-slider>
+  </div>
+</section>
+<section class="section action-description">
+  <div class="row row-top">
+    <span class="left"></span>
+    <span class="center"></span>
+    <span class="right"></span>
+  </div>
+  <div class="description">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </div>
+  <div class="row row-bottom">
+    <span class="left"></span>
+    <span class="center"></span>
+    <span class="right"></span>
   </div>
 </section>

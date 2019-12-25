@@ -7,13 +7,70 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.reviews {
-  padding-top: 50px;
+.reviews-header {
+  padding-tpo: 50px;
 }
 .section {
   padding-top: 50px;
   .header {
     padding: 10px 10px 10px 20px;
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.inspirations-preview {
+  width: 100%;
+  height: 760px;
+  &.mobile {
+    height: 640px;
+  }
+  &.tablet {
+    height: 320px;
+  }
+}
+.action-description {
+  padding: 100px 20px;
+  .row {
+    span {
+      display: block;
+      margin: 20px 10px;
+    }
+    display: flex;
+    justify-content: center;
+  }
+  .row-top {
+    .left {
+      width: 45%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+    .right {
+      width: 45%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+    .center {
+      width: 1px;
+      border-bottom: 1px solid #EEEEEE;
+    }
+  }
+  .row-bottom {
+    .left {
+      width: 25%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+    .right {
+      width: 25%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+    .center {
+      width: 1px;
+      border-bottom: 1px solid #EEEEEE;
+    }
+  }
+  .description {
+    font-family: Cambria;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
   }
 }
