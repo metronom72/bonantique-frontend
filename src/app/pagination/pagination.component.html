@@ -1,13 +1,54 @@
 <div class="wrapper">
-  <div class="previous" (click)="onPrevious()">&nbsp;<&nbsp;</div>
+  <div *ngIf="hasPrevious" class="previous" (click)="onPrevious()">&nbsp;<&nbsp;</div>
   <div class="pages">
-    <div class="first" (click)="onSelect(firstPage)">{{firstPage}}</div>
-    <div class="rest">&nbsp;...&nbsp;</div>
+    <div
+      *ngIf="hasPrevious || currentPage === firstPage"
+      class="first"
+      [class.current]="currentPage === firstPage"
+      (click)="onSelect(firstPage)"
+    >{{firstPage}}</div>
 
-    <div class="current">&nbsp;{{currentPage}}&nbsp;</div>
+    <div
+      *ngIf=" currentPage !== firstPage
+              && currentPage !== firstPage + 1
+      "
+      class="rest"
+    >&nbsp;{{firstPage + 1}}&nbsp;</div>
 
-    <div class="rest">&nbsp;...&nbsp;</div>
-    <div class="last" (click)="onSelect(totalPages)">&nbsp;{{totalPages}}&nbsp;</div>
+    <div
+      *ngIf=" currentPage !== firstPage
+              && currentPage !== firstPage + 1
+              && currentPage !== firstPage + 2
+      "
+      class="rest"
+    >&nbsp;...&nbsp;</div>
+
+    <div
+      *ngIf="currentPage !== totalPages && currentPage !== firstPage"
+      class="current"
+    >&nbsp;{{currentPage}}&nbsp;</div>
+
+    <div
+      *ngIf=" currentPage !== totalPages
+              && currentPage !== totalPages - 1
+              && currentPage !== totalPages - 2
+      "
+      class="rest"
+    >&nbsp;...&nbsp;</div>
+
+    <div
+      *ngIf=" currentPage !== totalPages
+              && currentPage !== totalPages - 1
+      "
+      class="rest"
+    >&nbsp;{{totalPages - 1}}&nbsp;</div>
+
+    <div
+      *ngIf="hasNext || currentPage === totalPages"
+      class="last"
+      [class.current]="currentPage === totalPages"
+      (click)="onSelect(totalPages)"
+    >&nbsp;{{totalPages}}&nbsp;</div>
   </div>
-  <div class="next" (click)="onNext()">&nbsp;>&nbsp;</div>
+  <div *ngIf="hasNext" class="next" (click)="onNext()">&nbsp;>&nbsp;</div>
 </div>

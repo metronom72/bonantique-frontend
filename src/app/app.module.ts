@@ -135,7 +135,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      // { enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [],

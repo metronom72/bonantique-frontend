@@ -60,7 +60,7 @@ export class PacksListComponent implements OnInit {
   ];
 
   public currentPage = 1;
-  public totalPages = 5;
+  public totalPages = 3;
 
   public isTablet: boolean;
   public isMobile: boolean;
@@ -84,21 +84,21 @@ export class PacksListComponent implements OnInit {
           this.isMobile = false;
         }
       });
-  };
+  }
 
   onNextPage = () => {
     if (this.currentPage === this.totalPages) {
       return;
     }
     this.currentPage = this.currentPage + 1;
-  };
+  }
 
   onPreviousPage = () => {
     if (this.currentPage === 1) {
       return;
     }
     this.currentPage = this.currentPage - 1;
-  };
+  }
 
   onSelectPage = (page: number) => {
     if (page === this.currentPage) {

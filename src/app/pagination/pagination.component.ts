@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'ba-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
 
   @Input()
   currentPage: number;
@@ -17,31 +18,65 @@ export class PaginationComponent implements OnInit {
   firstPage: number;
 
   @Output()
-  next: EventEmitter<any> = new EventEmitter();
+  nextPage: EventEmitter<any> = new EventEmitter();
 
   @Output()
-  previous: EventEmitter<any> = new EventEmitter();
+  previousPage: EventEmitter<any> = new EventEmitter();
 
   @Output()
-  select: EventEmitter<any> = new EventEmitter();
+  selectPage: EventEmitter<any> = new EventEmitter();
 
   public hasPrevious: boolean;
   public hasNext: boolean;
   public hasRest: boolean;
   public rest: number[];
 
-  constructor() { };
+  constructor() { }
 
-  ngOnInit() { };
+  ngOnInit() {
+    // this.calculate({
+    //   currentPage: this.currentPage,
+    //   firstPage: this.firstPage,
+    //   totalPages: this.totalPages,
+    // });
+  }
 
-  onNext = () => {
-    this.next.emit();
-  };
-  onPrevious = () => {
-    this.previous.emit();
-  };
-  onSelect = (page: number) => {
-    this.select.emit(page);
+  ngOnChanges(changes: SimpleChanges): void {
+    this.calculate(changes);
+  }
+
+  private calculate = (changes: SimpleChanges) => {
+    const {
+      currentPage,
+    } = changes;
+
+    console.log(currentPage);
+
+    if (currentPage) {
+      if (currentPage.currentValue === this.firstPage) {
+        this.hasPrevious = false;
+      } else {
+        this.hasPrevious = true;
+      }
+
+      if (currentPage.currentValue === this.totalPages) {
+        this.hasNext = false;
+      } else {
+        this.hasNext = true;
+      }
+    }
+  }
+
+  public onNext = () => {
+    this.nextPage.emit();
+  }
+
+  public onPrevious = () => {
+    this.previousPage.emit();
+  }
+
+  public onSelect = (page: number) => {
+    this.selectPage.emit(page);
   }
 
 }
