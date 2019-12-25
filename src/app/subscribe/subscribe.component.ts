@@ -17,7 +17,6 @@ export class SubscribeComponent implements OnInit {
   }
 
   public onSubmit = () => {
-    console.log('onSubmit');
     const controls = this.subscribeForm.controls;
 
     if (this.subscribeForm.invalid) {

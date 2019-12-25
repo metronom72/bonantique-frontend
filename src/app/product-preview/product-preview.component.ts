@@ -39,7 +39,6 @@ export class ProductPreviewComponent implements OnInit, OnDestroy {
 
     const current = new Date().getTime();
     const dateDiff = this.product.expireAt - current;
-    console.log(this.product.expireAt, current, dateDiff)
     if (dateDiff > 0) {
       const diff = dateDiff / (1000 * 60 * 60 * 24);
       const days = Math.floor(diff);

@@ -25,8 +25,8 @@ const generateReview = () => ({
     'https://i.pinimg.com/564x/a4/9c/eb/a49ceb195aba7914af88d4dc3bb57b5e.jpg',
   ],
   avatar: 'https://i.pinimg.com/564x/fe/82/5b/fe825bd1d90e874265f464bdc59b263a.jpg',
-  name: 'Aome Author Name',
-  packId: 13,
+  name: 'Some Author Name',
+  title: 'Pack\'s header',
   // tslint:disable-next-line:max-line-length
   review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
 });

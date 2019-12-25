@@ -1,20 +1,19 @@
-.feature-products {
+.feature-products,
+.articles,
+.reviews,
+.products {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-.articles {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+.reviews {
+  padding-top: 50px;
 }
 .section {
   padding-top: 50px;
   .header {
-    padding: 10px;
-    padding-left: 20px;
+    padding: 10px 10px 10px 20px;
     font-size: 20px;
   }
 }

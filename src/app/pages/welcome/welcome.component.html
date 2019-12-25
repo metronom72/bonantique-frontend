@@ -30,7 +30,7 @@
   <header class="header">
     Популярное сегодня
   </header>
-  <div class="feature-products">
+  <div class="products">
     <ba-product-preview
       *ngFor="let product of products; index as i"
       [product]="product"
@@ -40,5 +40,18 @@
       [class.tablet]="isTablet"
       [class.full-width]="i % 3 === 2 && i !== 0"
     ></ba-product-preview>
+  </div>
+</section>
+<section class="section">
+  <header class="header">
+    Последние отзывы
+  </header>
+  <div class="reviews">
+    <ba-review-preview
+      *ngFor="let review of reviews; index as i"
+      [review]="review"
+      [class.mobile]="isMobile"
+      [class.tablet]="isTablet"
+    ></ba-review-preview>
   </div>
 </section>
