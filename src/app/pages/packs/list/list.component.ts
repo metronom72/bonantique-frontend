@@ -19,10 +19,10 @@ export class PacksListComponent implements OnInit {
 
   paths: Array<{label: string, link: string}> = [{
     label: 'КАТАЛОГ',
-    link: ''
+    link: null
   }, {
     label: 'НАБОРЫ БАНКНОТ',
-    link: ''
+    link: 'list'
   }];
 
   categories: Array<{label: string, link: string}> = [

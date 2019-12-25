@@ -9,7 +9,9 @@
           <img src="assets/images/burger.svg" />
         </i>
       </div>
-      <ba-logo></ba-logo>
+      <a [routerLink]="['/']">
+        <ba-logo></ba-logo>
+      </a>
       <ba-menu *ngIf="!isMobile"></ba-menu>
     </div>
     <div class="right-wrapper">

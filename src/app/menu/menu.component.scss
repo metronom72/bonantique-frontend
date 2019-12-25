@@ -13,6 +13,14 @@
   text-transform: uppercase;
   font-family: Cambria;
   font-size: 18px;
+  a {
+    color: #EEEEEE;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      color: #CA9B22;
+    }
+  }
 }
 :host.mobile {
   .menu {

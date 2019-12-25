@@ -1,7 +1,9 @@
 <nav class="menu-wrapper">
   <ul class="menu">
     <li class="menu-item" *ngFor="let item of menu">
-      {{item.label}}
+      <a [routerLink]="[item.link]">
+        {{item.label}}
+      </a>
     </li>
   </ul>
 </nav>
