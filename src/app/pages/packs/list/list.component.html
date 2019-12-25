@@ -7,13 +7,15 @@
     *ngIf="!isMobile"
     [categories]="categories"
   ></ba-sidenav-catalog>
-  <div class="products">
+  <div
+    class="products"
+    [class.mobile]="isMobile"
+  >
     <ba-product-preview
       *ngFor="let product of products; index as i"
       [product]="product"
       [class.mobile]="isMobile"
       [class.tablet]="isTablet"
-      [class.full-width]="i % 3 === 2 && i !== 0"
     ></ba-product-preview>
   </div>
 </section>

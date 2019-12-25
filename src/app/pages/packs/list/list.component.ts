@@ -69,13 +69,13 @@ export class PacksListComponent implements OnInit {
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(max-width: 1024px)', '(max-width: 768px)'])
+      .observe(['(max-width: 1280px)', '(max-width: 900px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
-          if (state.breakpoints['(max-width: 1024px)'] && state.breakpoints['(max-width: 768px)']) {
+          if (state.breakpoints['(max-width: 1280px)'] && state.breakpoints['(max-width: 900px)']) {
             this.isTablet = false;
             this.isMobile = true;
-          } else if (!state.breakpoints['(max-width: 768px)'] && state.breakpoints['(max-width: 1024px)']) {
+          } else if (!state.breakpoints['(max-width: 900px)'] && state.breakpoints['(max-width: 1280px)']) {
             this.isTablet = true;
             this.isMobile = false;
           }

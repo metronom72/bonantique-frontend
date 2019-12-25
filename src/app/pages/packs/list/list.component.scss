@@ -8,4 +8,8 @@
   flex-wrap: wrap;
   width: calc(100% - 250px);
   padding-top: 40px;
+  &.mobile {
+    justify-content: center;
+    width: 100%;
+  }
 }
