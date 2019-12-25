@@ -22,6 +22,7 @@ import { SliderComponent } from './slider/slider.component';
 import { PacksListComponent } from './pages/packs/list/list.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidenavCatalogComponent } from './sidenav-catalog/sidenav-catalog.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const appRoutes: Routes = [
   {
@@ -125,7 +126,8 @@ const appRoutes: Routes = [
     SliderComponent,
     PacksListComponent,
     BreadcrumbsComponent,
-    SidenavCatalogComponent
+    SidenavCatalogComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

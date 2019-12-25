@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 50px 0;
+}
+.previous {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #222222;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.pages {
+  display: flex;
+  >div {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #222222;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.first {
+
+}
+.rest {
+
+}
+.current {
+  font-weight: bold;
+  color: #CA9B22;
+}
+.last {
+
+}
+.next {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #222222;
+  &:hover {
+    cursor: pointer;
+  }
+}
