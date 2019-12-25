@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'ba-pagination',
@@ -16,13 +16,32 @@ export class PaginationComponent implements OnInit {
   @Input()
   firstPage: number;
 
+  @Output()
+  next: EventEmitter<any> = new EventEmitter();
+
+  @Output()
+  previous: EventEmitter<any> = new EventEmitter();
+
+  @Output()
+  select: EventEmitter<any> = new EventEmitter();
+
   public hasPrevious: boolean;
   public hasNext: boolean;
   public hasRest: boolean;
   public rest: number[];
 
-  constructor() { }
+  constructor() { };
 
-  ngOnInit() { }
+  ngOnInit() { };
+
+  onNext = () => {
+    this.next.emit();
+  };
+  onPrevious = () => {
+    this.previous.emit();
+  };
+  onSelect = (page: number) => {
+    this.select.emit(page);
+  }
 
 }

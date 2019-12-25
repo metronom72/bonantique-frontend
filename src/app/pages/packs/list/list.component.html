@@ -21,4 +21,7 @@
   [currentPage]="currentPage"
   [totalPages]="totalPages"
   [firstPage]="1"
+  (next)="onNextPage()"
+  (previous)="onPreviousPage()"
+  (select)="onSelectPage($event)"
 ></ba-pagination>

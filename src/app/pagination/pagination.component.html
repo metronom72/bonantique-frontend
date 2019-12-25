@@ -1,13 +1,13 @@
 <div class="wrapper">
-  <div class="previous">&nbsp;<&nbsp;</div>
+  <div class="previous" (click)="onPrevious()">&nbsp;<&nbsp;</div>
   <div class="pages">
-    <div class="first">{{firstPage}}</div>
+    <div class="first" (click)="onSelect(firstPage)">{{firstPage}}</div>
     <div class="rest">&nbsp;...&nbsp;</div>
 
     <div class="current">&nbsp;{{currentPage}}&nbsp;</div>
 
     <div class="rest">&nbsp;...&nbsp;</div>
-    <div class="last">&nbsp;{{totalPages}}&nbsp;</div>
+    <div class="last" (click)="onSelect(totalPages)">&nbsp;{{totalPages}}&nbsp;</div>
   </div>
-  <div class="next">&nbsp;>&nbsp;</div>
+  <div class="next" (click)="onNext()">&nbsp;>&nbsp;</div>
 </div>

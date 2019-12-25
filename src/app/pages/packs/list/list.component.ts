@@ -59,7 +59,7 @@ export class PacksListComponent implements OnInit {
     generateProduct(),
   ];
 
-  public currentPage = 0;
+  public currentPage = 1;
   public totalPages = 5;
 
   public isTablet: boolean;
@@ -99,5 +99,12 @@ export class PacksListComponent implements OnInit {
     }
     this.currentPage = this.currentPage - 1;
   };
+
+  onSelectPage = (page: number) => {
+    if (page === this.currentPage) {
+      return;
+    }
+    this.currentPage = page;
+  }
 
 }
