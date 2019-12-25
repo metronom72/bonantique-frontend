@@ -1,6 +1,12 @@
 <div class="wrapper">
   <div class="review-preview">
-    <div class="slider"></div>
+    <div class="slider">
+      <ba-slider
+        [images]="review.images"
+        [withArrows]="false"
+        [initialCurrent]="0"
+      ></ba-slider>
+    </div>
     <div class="image">
       <img [src]="review.avatar" alt="avatar" class="avatar" />
     </div>

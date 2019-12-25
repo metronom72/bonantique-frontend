@@ -18,6 +18,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ReviewPreviewComponent } from './review-preview/review-preview.component';
+import { SliderComponent } from './slider/slider.component';
 
 const appRoutes: Routes = [
   {
@@ -117,7 +118,8 @@ const appRoutes: Routes = [
     WelcomeComponent,
     ProductPreviewComponent,
     ArticlePreviewComponent,
-    ReviewPreviewComponent
+    ReviewPreviewComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
