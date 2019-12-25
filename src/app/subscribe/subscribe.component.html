@@ -16,5 +16,8 @@
     <div class="error" *ngIf="isControlInvalid('email')">
       Введите корректный E-mail
     </div>
+    <div class="error" *ngIf="subscribeForm.errors.api">
+      {{subscribeForm.errors.api}}
+    </div>
   </form>
 </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Observable, ObservedValueOf } from 'rxjs';
+import { ConstantsService } from '../common/services/constants.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'ba-subscribe',
@@ -10,7 +14,7 @@ export class SubscribeComponent implements OnInit {
 
   public subscribeForm;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private constants: ConstantsService) { }
 
   public ngOnInit() {
     this.initForm();
@@ -24,6 +28,8 @@ export class SubscribeComponent implements OnInit {
 
       return;
     }
+
+    this.subscribeEmail();
   }
 
   public isControlInvalid = (controlName: string): boolean => {
@@ -41,6 +47,19 @@ export class SubscribeComponent implements OnInit {
         Validators.email
       ]],
     });
+  }
+
+  private subscribeEmail = () => {
+    console.log(this.subscribeForm)
+    this.httpClient.post(`${this.constants.baseAppUrl}subscribe`, {email: this.subscribeForm.value.email})
+      .subscribe(
+        (val) => {
+          console.log(val);
+        },
+        (error) => {
+          this.subscribeForm.setErrors({api: error.error.email[0]});
+        },
+      );
   }
 
 }

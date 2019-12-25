@@ -9,7 +9,6 @@ export class SubscriptionDescriptionComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
