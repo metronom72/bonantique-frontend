@@ -1,1 +1,12 @@
-<p>breadcrumbs works!</p>
+<div>
+  <ul>
+    <li *ngFor="let path of paths; index as i">
+      <span>
+        {{path}}
+      </span>
+      <span *ngIf="i !== paths.length - 1">
+        &nbsp;>&nbsp;
+      </span>
+    </li>
+  </ul>
+</div>
