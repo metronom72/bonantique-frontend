@@ -1,0 +1,29 @@
+:host {
+
+}
+.wrapper {
+
+}
+.sidenav {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-right: 2px solid #EEEEEE;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 250px;
+  min-height: calc(100vh - 400px - 40px);
+}
+.category {
+  padding: 5px;
+  a {
+    color: #EEEEEE;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      cursor: pointer;
+      color: #CA9B22;
+    }
+  }
+}

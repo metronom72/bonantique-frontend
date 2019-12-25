@@ -21,6 +21,7 @@ import { ReviewPreviewComponent } from './review-preview/review-preview.componen
 import { SliderComponent } from './slider/slider.component';
 import { PacksListComponent } from './pages/packs/list/list.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { SidenavCatalogComponent } from './sidenav-catalog/sidenav-catalog.component';
 
 const appRoutes: Routes = [
   {
@@ -123,7 +124,8 @@ const appRoutes: Routes = [
     ReviewPreviewComponent,
     SliderComponent,
     PacksListComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    SidenavCatalogComponent
   ],
   imports: [
     BrowserModule,

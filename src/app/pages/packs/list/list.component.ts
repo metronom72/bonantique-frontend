@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
@@ -8,7 +8,6 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 })
 export class PacksListComponent implements OnInit {
 
-  @Input()
   paths: Array<{label: string, link: string}> = [{
     label: 'КАТАЛОГ',
     link: ''
@@ -16,6 +15,19 @@ export class PacksListComponent implements OnInit {
     label: 'НАБОРЫ БАНКНОТ',
     link: ''
   }];
+
+  categories: Array<{label: string, link: string}> = [
+    {
+      label: 'БАНКНОТЫ ЦАРСКОЙ РОССИИ',
+      link: '',
+    }, {
+      label: 'БАНКНОТЫ РСФСР',
+      link: '',
+    }, {
+      label: 'БАНКНОТЫ СССР',
+      link: '',
+    }
+  ]
 
   public isTablet: boolean;
   public isMobile: boolean;
@@ -38,6 +50,7 @@ export class PacksListComponent implements OnInit {
           this.isTablet = false;
           this.isMobile = false;
         }
-      });}
+      });
+  }
 
 }

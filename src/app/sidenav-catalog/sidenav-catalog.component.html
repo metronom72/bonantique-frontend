@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <nav class="sidenav">
+    <ul>
+      <li *ngFor="let category of categories; index as i" class="category">
+        <a [routerLink]="category.link">
+          {{category.label}}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
