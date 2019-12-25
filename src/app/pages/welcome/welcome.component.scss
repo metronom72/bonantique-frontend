@@ -17,6 +17,20 @@
     font-size: 20px;
     display: flex;
     justify-content: space-between;
+    a {
+      color: #EEEEEE;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+        color: #CA9B22;
+      }
+    }
+  }
+  .footer{
+    width: 100%;
+    text-align: end;
+    padding: 30px 10px 10px 10px;
+    font-size: 20px;
   }
 }
 .inspirations-preview {

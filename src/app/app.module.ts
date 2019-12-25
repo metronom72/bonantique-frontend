@@ -19,6 +19,8 @@ import { ProductPreviewComponent } from './product-preview/product-preview.compo
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ReviewPreviewComponent } from './review-preview/review-preview.component';
 import { SliderComponent } from './slider/slider.component';
+import { PacksListComponent } from './pages/packs/list/list.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 const appRoutes: Routes = [
   {
@@ -29,10 +31,10 @@ const appRoutes: Routes = [
   //   path: 'packs/new',
   //   component: PackComponent,
   // },
-  // {
-  //   path: 'packs',
-  //   component: PacksComponent,
-  // },
+  {
+    path: 'packs',
+    component: PacksListComponent,
+  },
   // {
   //   path: 'packs/:id',
   //   component: PackComponent,
@@ -119,7 +121,9 @@ const appRoutes: Routes = [
     ProductPreviewComponent,
     ArticlePreviewComponent,
     ReviewPreviewComponent,
-    SliderComponent
+    SliderComponent,
+    PacksListComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
