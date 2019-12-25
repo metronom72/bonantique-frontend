@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'ba-list',
@@ -8,10 +9,35 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PacksListComponent implements OnInit {
 
   @Input()
-  paths: string[] = ['КАТАЛОГ', 'НАБОРЫ БАНКНОТ'];
+  paths: Array<{label: string, link: string}> = [{
+    label: 'КАТАЛОГ',
+    link: ''
+  }, {
+    label: 'НАБОРЫ БАНКНОТ',
+    link: ''
+  }];
 
-  constructor() { }
+  public isTablet: boolean;
+  public isMobile: boolean;
 
-  ngOnInit() { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe(['(max-width: 1024px)', '(max-width: 768px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          if (state.breakpoints['(max-width: 1024px)'] && state.breakpoints['(max-width: 768px)']) {
+            this.isTablet = false;
+            this.isMobile = true;
+          } else if (!state.breakpoints['(max-width: 768px)'] && state.breakpoints['(max-width: 1024px)']) {
+            this.isTablet = true;
+            this.isMobile = false;
+          }
+        } else {
+          this.isTablet = false;
+          this.isMobile = false;
+        }
+      });}
 
 }

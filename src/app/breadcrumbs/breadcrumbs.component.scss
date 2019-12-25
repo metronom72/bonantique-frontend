@@ -1,0 +1,19 @@
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.breadcrumb {
+  font-size: 14px;
+  &:first-of-type {
+    font-size: 18px;
+  }
+  a {
+    color: #EEEEEE;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      color: #CA9B22;
+    }
+  }
+}

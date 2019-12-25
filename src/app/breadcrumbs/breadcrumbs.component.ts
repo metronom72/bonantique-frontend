@@ -8,7 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BreadcrumbsComponent implements OnInit {
 
   @Input()
-  paths: string[] = []
+  paths: Array<{
+    label: string
+    link: string
+  }>
 
   constructor() { }
 
