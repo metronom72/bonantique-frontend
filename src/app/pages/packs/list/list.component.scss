@@ -1,0 +1,11 @@
+.section {
+  display: flex;
+}
+.products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: calc(100% - 250px);
+  padding-top: 40px;
+}

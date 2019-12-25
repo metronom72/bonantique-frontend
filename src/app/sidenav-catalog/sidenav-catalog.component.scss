@@ -2,21 +2,25 @@
 
 }
 .wrapper {
-
+  height: 100%;
+  border-right: 2px solid #EEEEEE;
+  position: relative;
 }
 .sidenav {
   margin-top: 40px;
   padding-top: 10px;
-  border-right: 2px solid #EEEEEE;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 250px;
-  min-height: calc(100vh - 400px - 40px);
+
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 .category {
-  padding: 5px;
+  padding: 10px 5px;
   a {
     color: #EEEEEE;
     text-decoration: none;

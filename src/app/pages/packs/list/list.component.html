@@ -2,8 +2,18 @@
   *ngIf="!isMobile"
   [paths]="paths"
 ></ba-breadcrumbs>
-<ba-sidenav-catalog
-  *ngIf="!isMobile"
-  [categories]="categories"
-></ba-sidenav-catalog>
-<p>list works!</p>
+<section class="section">
+  <ba-sidenav-catalog
+    *ngIf="!isMobile"
+    [categories]="categories"
+  ></ba-sidenav-catalog>
+  <div class="products">
+    <ba-product-preview
+      *ngFor="let product of products; index as i"
+      [product]="product"
+      [class.mobile]="isMobile"
+      [class.tablet]="isTablet"
+      [class.full-width]="i % 3 === 2 && i !== 0"
+    ></ba-product-preview>
+  </div>
+</section>

@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { generate } from 'rxjs';
+
+const generateProduct = () => ({
+  title: 'Хрущевские фантики',
+  expireAt: new Date('01-12-2020').getTime(),
+  cost: 10000,
+  previousCost: 12000,
+  image: 'https://i.pinimg.com/564x/b2/f5/37/b2f537117590dc580fa6bcaf654bb808.jpg',
+});
 
 @Component({
   selector: 'ba-list',
@@ -27,6 +36,27 @@ export class PacksListComponent implements OnInit {
       label: 'БАНКНОТЫ СССР',
       link: '',
     }
+  ];
+
+  products = [
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
+    generateProduct(),
   ]
 
   public isTablet: boolean;
