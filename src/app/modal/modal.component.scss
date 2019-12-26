@@ -1,0 +1,129 @@
+:host {
+
+}
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 1280px;
+  width: 100%;
+  min-width: 768px;
+  height: 435px;
+  min-height: 435px;
+  background-color: #EEEEEE;
+  transform: translate(-50%, -50%);
+  color: #111111;
+
+  &.mobile {
+    max-width: 768px;
+    width: 100%;
+    min-width: 320px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: unset;
+    .modal {
+      flex-direction: column;
+      padding: 10px;
+      min-width: unset;
+      max-width: 100%;
+      width: 100%;
+    }
+    .header {
+      font-size: 24px;
+      padding-top: 10px;
+      padding-left: 50px;
+      min-width: unset;
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+
+      width: 100%;
+      min-width: unset;
+      max-width: unset;
+    }
+    .times {
+      padding-top: 10px;
+    }
+    .content {
+      padding-top: 20px;
+
+      width: 100%;
+      min-width: unset;
+      max-width: unset;
+    }
+  }
+}
+.modal {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 10px 35px;
+}
+.header {
+  font-size: 48px;
+  padding: 24px 36px;
+  font-family: Cambria;
+
+  width: calc(100% - 500px);
+  min-width: calc(768px - 500px);
+  max-width: calc(1280px - 500px);
+}
+.times {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35px;
+  min-width: 35px;
+  height: 35px;
+  min-height: 35px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.content {
+  display: flex;
+  justify-content: flex-start;
+
+  width: calc(100% - 500px);
+  min-width: calc(768px - 500px);
+  max-width: calc(1280px - 500px);
+}
+.custom {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 10px 20px 10px;
+}
+.image-right {
+  min-height: 435px;
+  height: 435px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.image-top {
+  height: 250px;
+  max-height: 250px;
+  width: 100%;
+  position: relative;
+  top: unset;
+  right: unset;
+  overflow: hidden;
+}
+.image {
+  display: block;
+  width: 100%;
+}

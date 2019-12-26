@@ -14,7 +14,13 @@ export class SubscribeComponent implements OnInit {
 
   public apiErrors: string | null = null;
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private constants: ConstantsService) { }
+  public subscribed = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient,
+    private constants: ConstantsService
+  ) { }
 
   public ngOnInit() {
     this.initForm();
@@ -42,7 +48,7 @@ export class SubscribeComponent implements OnInit {
 
   private initForm = () => {
     this.subscribeForm = this.formBuilder.group({
-      email: ['', [
+      email: ['mikhail@dorokhovich.ru', [
         Validators.required,
         Validators.email
       ]],
@@ -56,7 +62,7 @@ export class SubscribeComponent implements OnInit {
     this.httpClient.post(`${this.constants.baseAppUrl}subscribe`, {email: this.subscribeForm.value.email})
       .subscribe(
         (val) => {
-          console.log(val);
+          this.subscribed = true;
         },
         (error) => {
           this.apiErrors = error.error.email[0];

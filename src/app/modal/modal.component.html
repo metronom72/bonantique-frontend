@@ -1,24 +1,47 @@
 <div
+  *ngIf="isOpened"
   class="wrapper"
   [class.without-header]="!withHeader"
+
+  [class.mobile]="isMobile"
 >
   <div class="modal">
-    <div
-      *ngIf="withHeader"
-      class="header"
-    >
-      {{header}}
-    </div>
     <div
       *ngIf="withClose"
       class="times"
       [class.times-without-header]="!withHeader"
       (click)="onClose()"
     >
-
+      <i>
+        close
+      </i>
     </div>
+
+    <div
+      *ngIf="withHeader"
+      class="header"
+    >
+      {{header}}
+    </div>
+
+    <div
+      *ngIf="withImage && isMobile"
+      class="image-top"
+    >
+      <img [src]="image" class="image" />
+    </div>
+
     <div class="content">
-      <ng-content></ng-content>
+      <div class="custom">
+        <ng-content></ng-content>
+      </div>
+    </div>
+
+    <div
+      *ngIf="withImage && !isMobile"
+      class="image-right"
+    >
+      <img [src]="image" class="image" />
     </div>
   </div>
 </div>

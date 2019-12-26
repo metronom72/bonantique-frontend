@@ -21,3 +21,17 @@
     </div>
   </form>
 </div>
+<ba-modal
+  [withHeader]="true"
+  [header]="'Благодарим за подписку'"
+  [withClose]="true"
+  [isOpened]="true"
+  [withImage]="true"
+  [image]="'https://i.pinimg.com/564x/ba/a6/25/baa625d8b15aa8dd2ef3cee038107d78.jpg'"
+>
+  <div class="success-subscription">
+    <div class="paragraph">
+      Вам на почту&nbsp;{{subscribeForm.get('email').value}}&nbsp;был отправлен промокод на скидку в 10% на будущие покупки.
+    </div>
+  </div>
+</ba-modal>
