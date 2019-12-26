@@ -25,9 +25,10 @@
   [withHeader]="true"
   [header]="'Благодарим за подписку'"
   [withClose]="true"
-  [isOpened]="true"
+  [isOpened]="isModalOpened"
   [withImage]="true"
   [image]="'https://i.pinimg.com/564x/ba/a6/25/baa625d8b15aa8dd2ef3cee038107d78.jpg'"
+  (close)="closeModal()"
 >
   <div class="success-subscription">
     <div class="paragraph">

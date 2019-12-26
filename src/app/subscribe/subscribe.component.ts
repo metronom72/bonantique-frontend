@@ -14,7 +14,7 @@ export class SubscribeComponent implements OnInit {
 
   public apiErrors: string | null = null;
 
-  public subscribed = false;
+  public isModalOpened = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,12 +62,17 @@ export class SubscribeComponent implements OnInit {
     this.httpClient.post(`${this.constants.baseAppUrl}subscribe`, {email: this.subscribeForm.value.email})
       .subscribe(
         (val) => {
-          this.subscribed = true;
+          this.isModalOpened = true;
+          this.subscribeForm.reset({});
         },
         (error) => {
           this.apiErrors = error.error.email[0];
         },
       );
+  }
+
+  closeModal = () => {
+    this.isModalOpened = false;
   }
 
 }
