@@ -24,6 +24,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SidenavCatalogComponent } from './sidenav-catalog/sidenav-catalog.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
 
 const appRoutes: Routes = [
   {
@@ -128,7 +129,8 @@ const appRoutes: Routes = [
     PacksListComponent,
     BreadcrumbsComponent,
     SidenavCatalogComponent,
-    PaginationComponent
+    PaginationComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div
+  class="wrapper"
+  [class.without-header]="!withHeader"
+>
+  <div class="modal">
+    <div
+      *ngIf="withHeader"
+      class="header"
+    >
+      {{header}}
+    </div>
+    <div
+      *ngIf="withClose"
+      class="times"
+      [class.times-without-header]="!withHeader"
+      (click)="onClose()"
+    >
+
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

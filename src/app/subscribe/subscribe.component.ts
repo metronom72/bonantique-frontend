@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ObservedValueOf } from 'rxjs';
 import { ConstantsService } from '../common/services/constants.service';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'ba-subscribe',
@@ -13,6 +11,8 @@ import { catchError } from 'rxjs/operators';
 export class SubscribeComponent implements OnInit {
 
   public subscribeForm;
+
+  public apiErrors: string | null = null;
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private constants: ConstantsService) { }
 
@@ -47,6 +47,8 @@ export class SubscribeComponent implements OnInit {
         Validators.email
       ]],
     });
+
+    this.subscribeForm.get('email').valueChanges.subscribe(val => this.apiErrors = null)
   }
 
   private subscribeEmail = () => {
@@ -57,7 +59,7 @@ export class SubscribeComponent implements OnInit {
           console.log(val);
         },
         (error) => {
-          this.subscribeForm.setErrors({api: error.error.email[0]});
+          this.apiErrors = error.error.email[0];
         },
       );
   }
