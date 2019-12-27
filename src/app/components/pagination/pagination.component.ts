@@ -28,18 +28,10 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   public hasPrevious: boolean;
   public hasNext: boolean;
-  public hasRest: boolean;
-  public rest: number[];
 
   constructor() { }
 
-  ngOnInit() {
-    // this.calculate({
-    //   currentPage: this.currentPage,
-    //   firstPage: this.firstPage,
-    //   totalPages: this.totalPages,
-    // });
-  }
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.calculate(changes);
@@ -49,8 +41,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     const {
       currentPage,
     } = changes;
-
-    console.log(currentPage);
 
     if (currentPage) {
       if (currentPage.currentValue === this.firstPage) {

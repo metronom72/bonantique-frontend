@@ -19,3 +19,7 @@ ul {
   box-sizing: border-box;
   font-weight: 300;
 }
+
+body.modal-opened {
+  overflow: hidden;
+}

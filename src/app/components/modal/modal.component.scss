@@ -54,6 +54,11 @@
       min-width: unset;
       max-width: unset;
     }
+    .footer {
+      width: 100%;
+      min-width: unset;
+      max-width: unset;
+    }
   }
 }
 .modal {
@@ -126,4 +131,20 @@
 .image {
   display: block;
   width: 100%;
+}
+.footer {
+  color: #222222;
+  font-size: 12px;
+  padding: 10px 40px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: calc(100% - 500px);
+  a {
+    color: #222222;
+    text-decoration: underline;
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ConstantsService } from '../common/services/constants.service';
+import { ConstantsService } from '../../common/services/constants.service';
 
 @Component({
   selector: 'ba-subscribe',

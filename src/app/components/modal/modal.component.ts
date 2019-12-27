@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2, OnChanges, SimpleChanges } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
@@ -6,7 +6,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnChanges {
 
   @Input()
   withHeader = true;
@@ -29,10 +29,23 @@ export class ModalComponent implements OnInit {
   @Output()
   close: EventEmitter<any> = new EventEmitter();
 
-  public isTablet: boolean;
   public isMobile: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private renderer: Renderer2
+  ) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const { isOpened } = changes;
+    if (isOpened) {
+      if (isOpened.currentValue) {
+        this.renderer.addClass(document.body, 'modal-opened');
+      } else {
+        this.renderer.removeClass(document.body, 'modal-opened');
+      }
+    }
+  }
 
   ngOnInit() {
     this.breakpointObserver
@@ -49,6 +62,7 @@ export class ModalComponent implements OnInit {
 
   public onClose = () => {
     this.close.emit();
+    this.renderer.removeClass(document.body, 'modal-opened');
   }
 
 }
