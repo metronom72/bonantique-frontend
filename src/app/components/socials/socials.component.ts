@@ -1,34 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ContactsService } from '../../common/services/contacts/contacts.service';
 
 @Component({
   selector: 'ba-socials',
   templateUrl: './socials.component.html',
-  styleUrls: ['./socials.component.scss']
+  styleUrls: ['./socials.component.scss'],
+  providers: [
+    ContactsService
+  ],
 })
 export class SocialsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contactsService: ContactsService) { }
 
-  socials = [
-    {
-      link: '',
-      label: 'Telegram',
-      icon: '/assets/images/telegram.svg',
-    },
-    {
-      link: '',
-      label: 'Instagram',
-      icon: '/assets/images/instagram.svg',
-    },
-    {
-      link: '',
-      label: 'VK',
-      icon: '/assets/images/vk.svg',
-    }
-  ];
+  socials = [];
 
-  phone = '+7 911 812 26 53';
-
-  ngOnInit() { }
+  ngOnInit() {
+    this.contactsService.contacts.subscribe(
+      contacts => {
+        this.socials = contacts.filter(contact => contact.scope === 'socials');
+      }
+    );
+  }
 
 }

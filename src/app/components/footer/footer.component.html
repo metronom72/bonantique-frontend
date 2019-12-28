@@ -3,9 +3,9 @@
     <ba-subscription-description [class.mobile]="isMobile"></ba-subscription-description>
     <ba-subscribe [class.mobile]="isMobile"></ba-subscribe>
     <div class="contacts">
-      <div class="phone">
-        <a class="link" href="tel:{{phone}}}">
-          {{phone}}
+      <div *ngFor="let phone of phones" class="phone">
+        <a class="link" [href]="phone.value">
+          {{phone.label}}
         </a>
       </div>
       <ba-socials></ba-socials>
@@ -48,9 +48,9 @@
           Все права защищены © Бон Антик
         </span>
       </div>
-      <div class="document">
-        <a class="link" href="mailto:admin@bon-antique.com" target="_blank">
-          admin@bon-antique.com
+      <div *ngFor="let email of emails" class="document">
+        <a class="link" [href]="email.link" target="_blank">
+          {{email.label}}
         </a>
       </div>
     </div>
