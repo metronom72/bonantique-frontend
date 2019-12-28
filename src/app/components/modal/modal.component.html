@@ -2,7 +2,6 @@
   *ngIf="isOpened"
   class="wrapper"
   [class.without-header]="!withHeader"
-
   [class.mobile]="isMobile"
 >
   <div class="modal">
@@ -13,7 +12,7 @@
       (click)="onClose()"
     >
       <i>
-        close
+        <img src="assets/images/times_dark.svg" />
       </i>
     </div>
 

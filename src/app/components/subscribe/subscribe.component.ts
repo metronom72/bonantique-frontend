@@ -48,7 +48,7 @@ export class SubscribeComponent implements OnInit {
 
   private initForm = () => {
     this.subscribeForm = this.formBuilder.group({
-      email: ['mikhail@dorokhovich.ru', [
+      email: ['', [
         Validators.required,
         Validators.email
       ]],
@@ -58,7 +58,6 @@ export class SubscribeComponent implements OnInit {
   }
 
   private subscribeEmail = () => {
-    console.log(this.subscribeForm)
     this.httpClient.post(`${this.constants.baseAppUrl}subscribe`, {email: this.subscribeForm.value.email})
       .subscribe(
         (val) => {
