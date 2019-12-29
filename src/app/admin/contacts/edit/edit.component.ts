@@ -18,7 +18,7 @@ export class EditComponent implements OnInit {
     value: new FormControl(null, Validators.required),
     label: new FormControl(null, Validators.required),
   });
-  public type: Subject<any> = new Subject<any>()
+  public type: string;
 
   constructor(
     private contactsService: ContactsService,
@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.params.id !== 'new') {
-      this.type.next('new');
+      this.type = 'edit';
       this.contactsService.contacts
         .subscribe(
           contacts => {
@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
           }
         );
     } else {
-      this.type.next('edit');
+      this.type = 'new';
     }
   }
 
