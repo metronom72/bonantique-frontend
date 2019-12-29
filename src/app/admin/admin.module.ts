@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ClarityModule } from '@clr/angular';
 import { ContactsComponent } from './contacts/contacts.component';
+import { TableComponent } from './contacts/table/table.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   declarations: [
     AdminComponent,
     ContactsComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,

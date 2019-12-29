@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   background-color: #111111;
-  color: #EEEEEE;
   position: relative;
 }
 .header {
@@ -16,6 +15,8 @@
   height: 70px;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: #111111;
+  color: #EEEEEE;
   &.mobile {
     min-width: 320px;
     padding-left: 10px;

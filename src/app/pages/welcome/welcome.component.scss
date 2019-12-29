@@ -8,7 +8,7 @@
   flex-wrap: wrap;
 }
 .reviews-header {
-  padding-tpo: 50px;
+  padding-top: 50px;
 }
 .section {
   padding-top: 50px;
@@ -17,6 +17,8 @@
     font-size: 20px;
     display: flex;
     justify-content: space-between;
+    background-color: #111111;
+    color: #EEEEEE;
     a {
       color: #EEEEEE;
       text-decoration: none;

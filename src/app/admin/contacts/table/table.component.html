@@ -1,0 +1,34 @@
+<clr-datagrid>
+  <clr-dg-column>Выводить?</clr-dg-column>
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column>Ссылка</clr-dg-column>
+  <clr-dg-column>Скоуп</clr-dg-column>
+  <clr-dg-column>Значение</clr-dg-column>
+  <clr-dg-column>Отображаемое значение</clr-dg-column>
+  <clr-dg-column>Дата создания</clr-dg-column>
+  <clr-dg-column>Последнее обновление</clr-dg-column>
+
+  <clr-dg-row *ngFor="let contact of contacts">
+    <clr-dg-cell>
+      {{contact.active}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.id}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.scope}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.value}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.label}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.created_at}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{contact.updated_at}}
+    </clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

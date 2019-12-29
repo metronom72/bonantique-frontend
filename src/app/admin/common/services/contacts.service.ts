@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ConstantsService } from '../constants.service';
+import { ConstantsService } from '../../../common/services/constants.service';
+import { AdminModule } from '../../admin.module';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ContactsService {
   public contacts: Subject<any> = new Subject<any>()
   public errors: Subject<any> = new Subject<any>()

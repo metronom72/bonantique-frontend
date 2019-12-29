@@ -65,7 +65,7 @@ export class SubscribeComponent implements OnInit {
           this.subscribeForm.reset({});
         },
         (error) => {
-          this.apiErrors = error.error.email[0];
+          this.apiErrors = error.error.errors.email[0];
         },
       );
   }
