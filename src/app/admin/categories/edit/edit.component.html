@@ -1,0 +1,30 @@
+<div>
+  <h1>{{this.type === 'edit' ? 'Обновление Категории' : 'Создание Новой Категории'}}</h1>
+</div>
+<form clrForm [formGroup]="categoryForm" (submit)="onSubmit()">
+  <clr-input-container>
+    <label>Название категории</label>
+    <input clrInput formControlName="title" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Уникальный идентификатор</label>
+    <input clrInput formControlName="slug" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-select-container>
+    <label>Родительская категория</label>
+    <select clrSelect formControlName="scope">
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{category.title}}
+      </option>
+    </select>
+  </clr-select-container>
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox formControlName="active" />
+      <label>Выводить данную категорию на сайте</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+  <button [disabled]="categoryForm.invalid" class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
+</form>

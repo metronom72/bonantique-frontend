@@ -51,10 +51,9 @@ export class EditComponent implements OnInit {
         .subscribe(
           (values: any) => {
             this.contactsService.getContacts();
-            this.router.navigateByUrl('/admin/contacts');
           },
           (errors: any) => {
-            this.router.navigateByUrl('/admin/contacts');
+            // pass
           }
         );
     } else {
@@ -62,10 +61,9 @@ export class EditComponent implements OnInit {
         .subscribe(
           (values: any) => {
             this.contactsService.getContacts();
-            this.router.navigateByUrl('/admin/contacts');
           },
           (errors: any) => {
-            this.router.navigateByUrl('/admin/contacts');
+            // pass
           }
         );
     }

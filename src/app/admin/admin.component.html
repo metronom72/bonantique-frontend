@@ -11,12 +11,19 @@
     </div>
   </header>
   <nav class="subnav">
-    <span class="title">Admin Panel</span>
+    <span class="admin-subnav">Admin Panel</span>
   </nav>
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
     </div>
-    <nav class="sidenav"></nav>
+    <nav class="sidenav">
+      <a
+        *ngFor="let category of categories"
+        class="nav-link"
+        [routerLink]="['', 'admin', 'categories', category.slug, 'edit']"
+      >{{category.label}}</a>
+      <button class="btn btn-primary" [routerLink]="['', 'admin', 'categories', 'new', 'edit']">Новая категория</button>
+    </nav>
   </div>
 </div>

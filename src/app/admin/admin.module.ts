@@ -7,6 +7,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { TableComponent } from './contacts/table/table.component';
 import { EditComponent as EditContactComponent } from './contacts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditComponent as EditCategoryComponent } from './categories/edit/edit.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
         path: 'contacts/:id/edit',
         component: EditContactComponent,
       },
+      {
+        path: 'categories/:slug/edit',
+        component: EditCategoryComponent,
+      },
     ]
   },
 ];
@@ -32,6 +37,7 @@ const routes: Routes = [
     ContactsComponent,
     TableComponent,
     EditContactComponent,
+    EditCategoryComponent,
   ],
   imports: [
     ReactiveFormsModule,
