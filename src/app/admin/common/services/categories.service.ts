@@ -4,39 +4,39 @@ import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from '../../../common/services/constants.service';
 
 @Injectable()
-export class ContactsService {
-  public contacts: Subject<any> = new Subject<any>();
+export class CategoriesService {
+  public categories: Subject<any> = new Subject<any>();
   public errors: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
     private constantsService: ConstantsService
   ) {
-    this.getContacts()
+    this.getCategories()
       .subscribe(
         (values: any) => {
-          this.contacts.next(values.data);
+          this.categories.next(values.data);
           this.errors.next(null);
         },
         (errors: any) => {
-          this.contacts.next([]);
+          this.categories.next([]);
           this.errors.next(errors.errors);
         }
       );
   }
 
-  public createContact = (contact: object) => {
+  public createCategory = (category: object) => {
     this.errors.next(null);
-    return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { new_contact: contact });
+    return this.http.post(`${this.constantsService.baseAppUrl}admin/categories`, { new_category: category });
   }
 
-  public updateContact = (id: number, contact: object) => {
+  public updateCategory = (id: number, category: object) => {
     this.errors.next(null);
-    return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact });
+    return this.http.patch(`${this.constantsService.baseAppUrl}admin/categories/${id}`, { category });
   }
 
-  public getContacts = () => {
+  public getCategories = () => {
     this.errors.next(null);
-    return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`);
+    return this.http.get(`${this.constantsService.baseAppUrl}admin/categories`);
   }
 }

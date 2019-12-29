@@ -15,8 +15,8 @@
   <clr-input-container>
     <label>Ссылка на которую будет происходить переход</label>
     <input clrInput formControlName="link" />
-    <a [href]="contactForm.controls.link" target="_blank"></a>
   </clr-input-container>
+  <a class="link-preview" [href]="contactForm.value.link" target="_blank">{{contactForm.value.label}}</a>
   <clr-select-container>
     <label>Скоуп</label>
     <select clrSelect formControlName="scope">
