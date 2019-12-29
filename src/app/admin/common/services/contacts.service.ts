@@ -6,14 +6,24 @@ import { AdminModule } from '../../admin.module';
 
 @Injectable()
 export class ContactsService {
-  public contacts: Subject<any> = new Subject<any>()
-  public errors: Subject<any> = new Subject<any>()
+  public contacts: Subject<any> = new Subject<any>();
+  public errors: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
     private constantsService: ConstantsService
   ) {
-    this.getContacts();
+    this.getContacts()
+      .subscribe(
+        (values: any) => {
+          this.contacts.next(values.data);
+          this.errors.next(null);
+        },
+        (errors: any) => {
+          this.contacts.next([]);
+          this.errors.next(errors.errors);
+        }
+      );
   }
 
   public createContact = (contact: object) => {
@@ -28,14 +38,6 @@ export class ContactsService {
 
   public getContacts = () => {
     this.errors.next(null);
-    return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`)
-      .subscribe(
-      (values: any) => {
-        this.contacts.next(values.data);
-      },
-      (errors: any) => {
-        this.errors.next(errors.errors);
-      }
-    );
+    return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`);
   }
 }
