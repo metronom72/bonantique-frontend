@@ -5,6 +5,8 @@ import { AdminComponent } from './admin.component';
 import { ClarityModule } from '@clr/angular';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TableComponent } from './contacts/table/table.component';
+import { EditComponent as EditContactComponent } from './contacts/edit/edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -16,6 +18,10 @@ const routes: Routes = [
         path: 'contacts',
         component: ContactsComponent,
       },
+      {
+        path: 'contacts/:id/edit',
+        component: EditContactComponent,
+      },
     ]
   },
 ];
@@ -25,8 +31,10 @@ const routes: Routes = [
     AdminComponent,
     ContactsComponent,
     TableComponent,
+    EditContactComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
     ClarityModule,

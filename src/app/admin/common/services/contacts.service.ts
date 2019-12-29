@@ -16,13 +16,33 @@ export class ContactsService {
     this.getContacts();
   }
 
+  public createContact = (contact: object) => {
+    this.errors.next(null);
+    return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { contact })
+      .subscribe(
+        (values: any) => {
+          console.log(values);
+        },
+        (errors: any) => {
+          console.log(errors);
+        }
+      );
+  }
+
+  public updateContact = (id: number, contact: object) => {
+    this.errors.next(null);
+    return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact })
+  }
+
   public getContacts = () => {
-    this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`).subscribe(
+    this.errors.next(null);
+    return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`)
+      .subscribe(
       (values: any) => {
         this.contacts.next(values.data);
       },
-      (err: any) => {
-        this.errors.next(err.errors);
+      (errors: any) => {
+        this.errors.next(errors.errors);
       }
     );
   }

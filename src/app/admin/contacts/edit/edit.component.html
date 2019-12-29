@@ -1,0 +1,30 @@
+<form clrForm [formGroup]="contactForm" (submit)="onSubmit()">
+  <clr-input-container>
+    <label>Значение</label>
+    <input clrInput formControlName="value" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Выводимое значение</label>
+    <input clrInput formControlName="label" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Ссылка на которую будет происходить переход</label>
+    <input clrInput formControlName="link" />
+    <a [href]="contactForm.controls.link.value" target="_blank"></a>
+  </clr-input-container>
+  <clr-select-container>
+    <label>Скоуп</label>
+    <select clrSelect formControlName="scope">
+      <option value="socials">Социальные сети</option>
+      <option value="email">Электронная почта</option>
+      <option value="phone">Телефон</option>
+  </select>
+  </clr-select-container>
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox formControlName="active" />
+      <label>Выводить данный контакт</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+  <button class="btn btn-primary">Обновить</button>
+</form>
