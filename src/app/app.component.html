@@ -1,9 +1,9 @@
 <div>
-  <ba-header></ba-header>
-  <div class="content-wrapper">
-    <div class="content">
+  <ba-header *ngIf="!isAdmin"></ba-header>
+  <div [class.content-wrapper]="!isAdmin" [class.admin]="isAdmin">
+    <div [class.content]="!isAdmin" [class.admin]="isAdmin">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <ba-footer></ba-footer>
+  <ba-footer *ngIf="!isAdmin"></ba-footer>
 </div>

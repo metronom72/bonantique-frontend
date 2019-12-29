@@ -25,88 +25,22 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { SidenavCatalogComponent } from './components/sidenav-catalog/sidenav-catalog.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ClarityModule } from '@clr/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
   },
-  // {
-  //   path: 'packs/new',
-  //   component: PackComponent,
-  // },
   {
     path: 'packs',
     component: PacksListComponent,
   },
-  // {
-  //   path: 'packs/:id',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'packs/:id',
-  //   component: PackComponent,
-  // },
-  //
-  // {
-  //   path: 'bonds/new',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'bonds',
-  //   component: PacksComponent,
-  // },
-  // {
-  //   path: 'bonds/:id',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'bonds/:id',
-  //   component: PackComponent,
-  // },
-  //
-  // {
-  //   path: 'inspirations/new',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'inspirations',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'inspirations/:id',
-  //   component: PackComponent,
-  // },
-  //
-  // {
-  //   path: 'orders/new',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'orders',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'orders/:id',
-  //   component: PackComponent,
-  // },
-  //
-  // {
-  //   path: 'login',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'logout',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'resetpassword',
-  //   component: PackComponent,
-  // },
-  // {
-  //   path: 'confirmations/email',
-  //   component: PackComponent,
-  // },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
 ];
 
 @NgModule({
@@ -140,7 +74,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       // { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    ClarityModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
