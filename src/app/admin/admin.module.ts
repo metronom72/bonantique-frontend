@@ -3,21 +3,34 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ClarityModule } from '@clr/angular';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent
-  }
+    component: AdminComponent,
+    children: [
+      {
+        path: 'contacts',
+        component: ContactsComponent,
+      },
+    ]
+  },
 ];
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [
+    AdminComponent,
+    ContactsComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ClarityModule
+    ClarityModule,
+  ],
+  exports: [
+    RouterModule,
   ]
 })
 export class AdminModule { }

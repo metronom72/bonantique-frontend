@@ -28,7 +28,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const appRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: WelcomeComponent,
@@ -39,7 +39,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
   },
 ];
 
@@ -67,12 +67,11 @@ const appRoutes: Routes = [
     ModalComponent
   ],
   imports: [
-    BrowserModule,
     LayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(
-      appRoutes,
+      routes,
       // { enableTracing: true } // <-- debugging purposes only
     ),
     ClarityModule,

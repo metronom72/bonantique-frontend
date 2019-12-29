@@ -2,15 +2,21 @@
   <div class="alert alert-app-level"></div>
   <header class="header header-6">
     <div class="branding">
-      <a href="..." class="nav-link">
-        <clr-icon shape="vm-bug"></clr-icon>
-        <span class="title">Project Clarity</span>
+      <a [routerLink]="['', 'admin']" class="nav-link">
+        <img src="assets/images/logo_light.svg" class="logo" />
       </a>
     </div>
+    <div class="header-nav">
+      <a [routerLink]="['', 'admin', 'contacts']" class="nav-link nav-text">Контакты</a>
+    </div>
   </header>
-  <nav class="subnav"></nav>
+  <nav class="subnav">
+    <span class="title">Admin Panel</span>
+  </nav>
   <div class="content-container">
-    <div class="content-area"></div>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
     <nav class="sidenav"></nav>
   </div>
 </div>
