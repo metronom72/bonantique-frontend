@@ -1,3 +1,6 @@
+<div>
+  <h1>{{this.type === 'edit' ? 'Обновление контакта' : 'Создание нового контакта'}}</h1>
+</div>
 <form clrForm [formGroup]="contactForm" (submit)="onSubmit()">
   <clr-input-container>
     <label>Значение</label>
@@ -26,8 +29,8 @@
   <clr-checkbox-container>
     <clr-checkbox-wrapper>
       <input type="checkbox" clrCheckbox formControlName="active" />
-      <label>Выводить данный контакт</label>
+      <label>Выводить данный контакт на сайте</label>
     </clr-checkbox-wrapper>
   </clr-checkbox-container>
-  <button class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
+  <button [disabled]="contactForm.invalid" class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
 </form>
