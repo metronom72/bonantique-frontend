@@ -18,20 +18,12 @@ export class ContactsService {
 
   public createContact = (contact: object) => {
     this.errors.next(null);
-    return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { contact })
-      .subscribe(
-        (values: any) => {
-          console.log(values);
-        },
-        (errors: any) => {
-          console.log(errors);
-        }
-      );
+    return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { new_contact: contact });
   }
 
   public updateContact = (id: number, contact: object) => {
     this.errors.next(null);
-    return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact })
+    return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact });
   }
 
   public getContacts = () => {

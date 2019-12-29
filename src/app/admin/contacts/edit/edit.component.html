@@ -2,15 +2,17 @@
   <clr-input-container>
     <label>Значение</label>
     <input clrInput formControlName="value" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-input-container>
   <clr-input-container>
     <label>Выводимое значение</label>
     <input clrInput formControlName="label" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-input-container>
   <clr-input-container>
     <label>Ссылка на которую будет происходить переход</label>
     <input clrInput formControlName="link" />
-    <a [href]="contactForm.controls.link.value" target="_blank"></a>
+    <a [href]="contactForm.controls.link" target="_blank"></a>
   </clr-input-container>
   <clr-select-container>
     <label>Скоуп</label>
@@ -18,7 +20,8 @@
       <option value="socials">Социальные сети</option>
       <option value="email">Электронная почта</option>
       <option value="phone">Телефон</option>
-  </select>
+    </select>
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-select-container>
   <clr-checkbox-container>
     <clr-checkbox-wrapper>
@@ -26,5 +29,5 @@
       <label>Выводить данный контакт</label>
     </clr-checkbox-wrapper>
   </clr-checkbox-container>
-  <button class="btn btn-primary">Обновить</button>
+  <button class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
 </form>
