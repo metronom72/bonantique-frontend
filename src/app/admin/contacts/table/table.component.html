@@ -1,34 +1,42 @@
 <clr-datagrid>
-  <clr-dg-column>Выводить?</clr-dg-column>
-  <clr-dg-column>ID</clr-dg-column>
-  <clr-dg-column>Ссылка</clr-dg-column>
-  <clr-dg-column>Скоуп</clr-dg-column>
-  <clr-dg-column>Значение</clr-dg-column>
-  <clr-dg-column>Отображаемое значение</clr-dg-column>
-  <clr-dg-column>Дата создания</clr-dg-column>
-  <clr-dg-column>Последнее обновление</clr-dg-column>
+  <clr-dg-column clrDgField="active">Выводить?</clr-dg-column>
+  <clr-dg-column clrDgField="id">ID</clr-dg-column>
+  <clr-dg-column clrDgField="link">Ссылка</clr-dg-column>
+  <clr-dg-column clrDgField="scope">Скоуп</clr-dg-column>
+  <clr-dg-column clrDgField="value">Значение</clr-dg-column>
+  <clr-dg-column clrDgField="label">Отображаемое значение</clr-dg-column>
+  <clr-dg-column clrDgField="created_at">Дата создания</clr-dg-column>
+  <clr-dg-column clrDgField="updated_at">Последнее обновление</clr-dg-column>
 
-  <clr-dg-row *ngFor="let contact of contacts">
+  <clr-dg-row *clrDgItems="let contact of contacts">
     <clr-dg-cell>
-      {{contact.active}}
+      <clr-checkbox-wrapper>
+        <input type="checkbox" [checked]="!!contact.active" disabled clrCheckbox value="option1" name="options" />
+      </clr-checkbox-wrapper>
     </clr-dg-cell>
-    <clr-dg-cell>
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
       {{contact.id}}
     </clr-dg-cell>
     <clr-dg-cell>
+      <a *ngIf="contact.link" [href]="contact.link" target="_blank">
+        {{contact.link}}
+      </a>
+    </clr-dg-cell>
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
       {{contact.scope}}
     </clr-dg-cell>
-    <clr-dg-cell>
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
       {{contact.value}}
     </clr-dg-cell>
-    <clr-dg-cell>
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
       {{contact.label}}
     </clr-dg-cell>
-    <clr-dg-cell>
-      {{contact.created_at}}
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
+      {{contact.created_at | date}}
     </clr-dg-cell>
-    <clr-dg-cell>
-      {{contact.updated_at}}
+    <clr-dg-cell [routerLink]="['', 'admin', 'contacts', contact.id, 'edit']">
+      {{contact.updated_at | date}}
     </clr-dg-cell>
   </clr-dg-row>
+  <clr-dg-footer>{{contacts.length}}&nbsp;Контактов</clr-dg-footer>
 </clr-datagrid>

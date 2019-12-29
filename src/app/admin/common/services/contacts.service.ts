@@ -17,7 +17,7 @@ export class ContactsService {
   }
 
   public getContacts = () => {
-    this.http.get(`${this.constantsService.baseAppUrl}contacts`).subscribe(
+    this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`).subscribe(
       (values: any) => {
         this.contacts.next(values.data);
       },
