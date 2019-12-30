@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Contact } from '../../../common/contact';
 
 @Component({
   selector: 'ba-table',
@@ -10,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input()
-  contacts: object[] = [];
+  contacts: Contact[] = [];
 
   constructor() { }
 

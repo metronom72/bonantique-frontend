@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ConstantsService } from '../../../common/services/constants.service';
+import { ConstantsService } from './constants.service';
+import { Category } from '../category';
 
 @Injectable()
 export class CategoriesService {
-  public categories: Subject<any> = new Subject<any>();
+  public categories: Subject<Category[]> = new Subject<Category[]>();
   public errors: Subject<any> = new Subject<any>();
 
   constructor(
@@ -14,23 +15,23 @@ export class CategoriesService {
   ) {
     this.getCategories()
       .subscribe(
-        (values: any) => {
+        (values: {data: Category[]}) => {
           this.categories.next(values.data);
           this.errors.next(null);
         },
-        (errors: any) => {
+        (errors: {errors: object[]}) => {
           this.categories.next([]);
           this.errors.next(errors.errors);
         }
       );
   }
 
-  public createCategory = (category: object) => {
+  public createCategory = (category: Category) => {
     this.errors.next(null);
     return this.http.post(`${this.constantsService.baseAppUrl}admin/categories`, { new_category: category });
   }
 
-  public updateCategory = (id: number, category: object) => {
+  public updateCategory = (id: string, category: Category) => {
     this.errors.next(null);
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/categories/${id}`, { category });
   }

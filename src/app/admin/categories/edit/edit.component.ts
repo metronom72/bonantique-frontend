@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../../common/services/categories.service';
+import { CategoriesService } from '../../../common/services/categories.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { Category } from '../../../common/category';
 
 @Component({
   selector: 'ba-edit',
@@ -17,7 +18,7 @@ export class EditComponent implements OnInit {
     active: new FormControl(true, Validators.required),
   });
   public type: string;
-  public categories: object[] = [];
+  public categories: Category[] = [];
 
   constructor(
     private categoriesService: CategoriesService,
@@ -26,13 +27,15 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.type = 'edit';
-    if (this.route.snapshot.params.slug !== 'new') {
-      this.type = 'edit';
-      this.categoriesService.categories
-        .subscribe(
-          categories => {
-            this.categories = categories;
+    this.categoriesService.categories
+      .subscribe(
+        (categories: Category[]) => {
+          this.categories = categories;
+          if (this.route.snapshot.params.slug === 'new') {
+            this.type = 'new';
+          } else {
+            this.type = 'edit';
+
             const category = categories.find(c => c.slug === this.route.snapshot.params.slug);
             if (category) {
               this.categoryForm.reset(category);
@@ -40,16 +43,14 @@ export class EditComponent implements OnInit {
               this.router.navigateByUrl('/admin');
             }
           }
-        );
-    } else {
-      this.type = 'new';
-    }
+        }
+      );
   }
 
   onSubmit = () => {
-    if (this.route.snapshot.params.id !== 'new') {
-      const category = this.categories.find(c => c.slug === this.route.snapshot.params.slug);
-      this.categoriesService.updateCategory(parseInt(category.id, 10), this.categoryForm.value)
+    if (this.route.snapshot.params.slug !== 'new') {
+      const category: Category = this.categories.find(c => c.slug === this.route.snapshot.params.slug);
+      this.categoriesService.updateCategory(category.slug, this.categoryForm.value)
         .subscribe(
           (values: any) => {
             this.categoriesService.getCategories();

@@ -14,9 +14,10 @@
   </clr-input-container>
   <clr-select-container>
     <label>Родительская категория</label>
-    <select clrSelect formControlName="scope">
+    <select clrSelect formControlName="parent_category_id">
+      <option value="null">Ничего не выбрано</option>
       <option *ngFor="let category of categories" [value]="category.id">
-        {{category.title}}
+        {{category.title}} - {{category.slug}}
       </option>
     </select>
   </clr-select-container>

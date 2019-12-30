@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ContactsService } from '../../common/services/contacts/contacts.service';
+import { Component, OnInit } from '@angular/core';
+import { Contact, ContactScopeEnum } from '../../common/contact';
+import { ContactsService } from '../../common/services/contacts.service';
 
 @Component({
   selector: 'ba-socials',
@@ -13,12 +14,12 @@ export class SocialsComponent implements OnInit {
 
   constructor(private contactsService: ContactsService) { }
 
-  socials = [];
+  socials: Contact[] = [];
 
   ngOnInit() {
     this.contactsService.contacts.subscribe(
-      contacts => {
-        this.socials = contacts.filter(contact => contact.scope === 'socials');
+      (contacts: Contact[]) => {
+        this.socials = contacts.filter(contact => contact.scope === ContactScopeEnum.SOCIALS);
       }
     );
   }

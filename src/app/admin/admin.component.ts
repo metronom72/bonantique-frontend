@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from './common/services/categories.service';
+import { CategoriesService } from '../common/services/categories.service';
+import { Category } from '../common/category';
 
 @Component({
   selector: 'ba-admin',
@@ -9,14 +10,14 @@ import { CategoriesService } from './common/services/categories.service';
 })
 export class AdminComponent implements OnInit {
 
-  categories: object[] = [];
+  categories: Category[] = [];
 
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
     this.categoriesService.categories
       .subscribe(
-        categories => {
+        (categories: Category[]) => {
           this.categories = categories;
         }
       );

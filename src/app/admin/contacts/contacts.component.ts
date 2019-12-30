@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactsService } from '../common/services/contacts.service';
+import { ContactsService } from '../../common/services/contacts.service';
+import { Contact } from '../../common/contact';
 
 @Component({
   selector: 'ba-contacts',
@@ -9,16 +10,14 @@ import { ContactsService } from '../common/services/contacts.service';
 })
 export class ContactsComponent implements OnInit {
 
-
-
-  public contacts: object[] = [];
+  public contacts: Contact[] = [];
 
   constructor(private contactsService: ContactsService) { }
 
   ngOnInit() {
     this.contactsService.contacts
       .subscribe(
-        contacts => {
+        (contacts: Contact[]) => {
           this.contacts = contacts;
         }
       );

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { ContactsService } from '../../common/services/contacts/contacts.service';
-import { Subject } from 'rxjs';
+import { Contact, ContactScopeEnum } from '../../common/contact';
+import { ContactsService } from '../../common/services/contacts.service';
 
 @Component({
   selector: 'ba-footer',
@@ -13,8 +13,8 @@ import { Subject } from 'rxjs';
 })
 export class FooterComponent implements OnInit {
 
-  public phones = [];
-  public emails = [];
+  public phones: Contact[] = [];
+  public emails: Contact[] = [];
 
   public isMobile: boolean;
 
@@ -25,9 +25,9 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.contactsService.contacts.subscribe(
-      contacts => {
-        this.phones = contacts.filter(contact => contact.scope === 'phone');
-        this.emails = contacts.filter(contact => contact.scope === 'email');
+      (contacts: Contact[]) => {
+        this.phones = contacts.filter(contact => contact.scope === ContactScopeEnum.PHONE);
+        this.emails = contacts.filter(contact => contact.scope === ContactScopeEnum.EMAIL);
       }
     );
     this.breakpointObserver

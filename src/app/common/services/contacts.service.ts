@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ConstantsService } from '../../../common/services/constants.service';
+import { ConstantsService } from './constants.service';
+import { Contact } from '../contact';
 
 @Injectable()
 export class ContactsService {
-  public contacts: Subject<any> = new Subject<any>();
+  public contacts: Subject<Contact[]> = new Subject<Contact[]>();
   public errors: Subject<any> = new Subject<any>();
 
   constructor(
@@ -14,23 +15,23 @@ export class ContactsService {
   ) {
     this.getContacts()
       .subscribe(
-        (values: any) => {
+        (values: { data: Contact[] }) => {
           this.contacts.next(values.data);
           this.errors.next(null);
         },
-        (errors: any) => {
+        (errors: { errors: object[] }) => {
           this.contacts.next([]);
           this.errors.next(errors.errors);
         }
       );
   }
 
-  public createContact = (contact: object) => {
+  public createContact = (contact: Contact) => {
     this.errors.next(null);
     return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { new_contact: contact });
   }
 
-  public updateContact = (id: number, contact: object) => {
+  public updateContact = (id: number, contact: Contact) => {
     this.errors.next(null);
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact });
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ContactsService } from '../../common/services/contacts.service';
+import { ContactsService } from '../../../common/services/contacts.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Contact } from '../../../common/contact';
 
 @Component({
   selector: 'ba-edit',
@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
       this.type = 'edit';
       this.contactsService.contacts
         .subscribe(
-          contacts => {
+          (contacts: Contact[]) => {
             const contact = contacts.find(c => c.id.toString() === this.route.snapshot.params.id);
             if (contact) {
               this.contactForm.reset(contact);
@@ -49,7 +49,7 @@ export class EditComponent implements OnInit {
     if (this.route.snapshot.params.id !== 'new') {
       this.contactsService.updateContact(parseInt(this.route.snapshot.params.id, 10), this.contactForm.value)
         .subscribe(
-          (values: any) => {
+          (values: { data: Contact }) => {
             this.contactsService.getContacts();
           },
           (errors: any) => {
@@ -59,7 +59,7 @@ export class EditComponent implements OnInit {
     } else {
       this.contactsService.createContact(this.contactForm.value)
         .subscribe(
-          (values: any) => {
+          (values: { data: Contact }) => {
             this.contactsService.getContacts();
           },
           (errors: any) => {

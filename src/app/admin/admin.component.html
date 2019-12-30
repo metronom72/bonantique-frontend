@@ -22,7 +22,7 @@
         *ngFor="let category of categories"
         class="nav-link"
         [routerLink]="['', 'admin', 'categories', category.slug, 'edit']"
-      >{{category.label}}</a>
+      >{{category.title}}</a>
       <button class="btn btn-primary" [routerLink]="['', 'admin', 'categories', 'new', 'edit']">Новая категория</button>
     </nav>
   </div>
