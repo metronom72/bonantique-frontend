@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { generate } from 'rxjs';
+import { CategoriesService } from '../../../common/services/categories.service';
+import { Category } from '../../../common/category';
 
 const generateProduct = () => ({
   title: 'Хрущевские фантики',
@@ -25,18 +27,7 @@ export class PacksListComponent implements OnInit {
     link: 'list'
   }];
 
-  categories: Array<{label: string, link: string}> = [
-    {
-      label: 'БАНКНОТЫ ЦАРСКОЙ РОССИИ',
-      link: '',
-    }, {
-      label: 'БАНКНОТЫ РСФСР',
-      link: '',
-    }, {
-      label: 'БАНКНОТЫ СССР',
-      link: '',
-    }
-  ];
+  categories: Category[] = [];
 
   products = [
     generateProduct(),
@@ -65,9 +56,17 @@ export class PacksListComponent implements OnInit {
   public isTablet: boolean;
   public isMobile: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private categoriesService: CategoriesService,
+  ) { }
 
   ngOnInit() {
+    this.categoriesService.categories
+      .subscribe((categories: Category[]) => {
+        const parentCategory = categories.find(category => category.slug === 'banknotes');
+        this.categories = categories.filter(category => category.parent_category_id === parentCategory.id);
+      })
     this.breakpointObserver
       .observe(['(max-width: 1280px)', '(max-width: 900px)'])
       .subscribe((state: BreakpointState) => {

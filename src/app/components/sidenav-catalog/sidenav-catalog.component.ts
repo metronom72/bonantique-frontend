@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../../common/category';
 
 @Component({
   selector: 'ba-sidenav-catalog',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SidenavCatalogComponent implements OnInit {
 
   @Input()
-  categories: Array<{label: string, link: string}> = [];
+  categories: Category[] = [];
 
   constructor() { }
 
