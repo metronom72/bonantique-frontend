@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../../common/category';
 
 @Component({
   selector: 'ba-breadcrumbs',
@@ -8,10 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BreadcrumbsComponent implements OnInit {
 
   @Input()
-  paths: Array<{
-    label: string
-    link: string
-  }>
+  paths: Category[] = []
 
   constructor() { }
 

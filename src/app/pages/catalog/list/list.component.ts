@@ -21,13 +21,7 @@ const generateProduct = () => ({
 })
 export class PacksListComponent implements OnInit {
 
-  paths: Array<{label: string, link: string}> = [{
-    label: 'КАТАЛОГ',
-    link: '/catalog',
-  }, {
-    label: 'СССР',
-    link: '/category/ussr',
-  }];
+  paths: Category[] = [];
 
   categories: Category[] = [];
 
@@ -93,6 +87,24 @@ export class PacksListComponent implements OnInit {
           this.isMobile = false;
         }
       });
+
+    this.activatedRoute.params.subscribe(params => {
+      if (params.category) {
+        const currentCategory = this.categoriesService.categories.find(category => category.slug === params.category);
+        if (currentCategory) {
+          if (currentCategory.parent_category_id) {
+            const parentCategory = this.categoriesService.categories.find(category => category.id === currentCategory.parent_category_id);
+            if (parentCategory) {
+              this.paths = [parentCategory, currentCategory];
+            } else {
+              this.paths = [currentCategory];
+            }
+          } else {
+            this.paths = [currentCategory];
+          }
+        }
+      }
+    })
   }
 
   onNextPage = () => {

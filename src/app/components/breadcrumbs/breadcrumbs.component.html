@@ -1,8 +1,8 @@
 <div class="wrapper">
   <ul class="breadcrumbs">
     <li *ngFor="let path of paths; index as i" class="breadcrumb">
-      <a [routerLink]="path.link">
-        {{path.label}}
+      <a [routerLink]="['', 'category', path.slug]">
+        {{path.title}}
       </a>
       <span *ngIf="i !== paths.length - 1">
         &nbsp;>&nbsp;&nbsp;
