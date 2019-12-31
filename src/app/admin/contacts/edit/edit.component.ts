@@ -28,17 +28,12 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id !== 'new') {
       this.type = 'edit';
-      this.contactsService.contacts
-        .subscribe(
-          (contacts: Contact[]) => {
-            const contact = contacts.find(c => c.id.toString() === this.route.snapshot.params.id);
-            if (contact) {
-              this.contactForm.reset(contact);
-            } else {
-              this.router.navigateByUrl('/admin/contacts');
-            }
-          }
-        );
+      const contact = this.contactsService.contacts.find(c => c.id.toString() === this.route.snapshot.params.id);
+      if (contact) {
+        this.contactForm.reset(contact);
+      } else {
+        this.router.navigateByUrl('/admin/contacts');
+      }
     } else {
       this.type = 'new';
     }
