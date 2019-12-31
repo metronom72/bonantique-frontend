@@ -20,7 +20,7 @@ import { ProductPreviewComponent } from './components/product-preview/product-pr
 import { ArticlePreviewComponent } from './components/article-preview/article-preview.component';
 import { ReviewPreviewComponent } from './components/review-preview/review-preview.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { PacksListComponent } from './pages/packs/list/list.component';
+import { PacksListComponent } from './pages/catalog/list/list.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { SidenavCatalogComponent } from './components/sidenav-catalog/sidenav-catalog.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -34,7 +34,19 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
-    path: 'packs',
+    path: 'catalog',
+    component: PacksListComponent,
+  },
+  {
+    path: 'catalog/:page',
+    component: PacksListComponent,
+  },
+  {
+    path: 'category/:category',
+    component: PacksListComponent,
+  },
+  {
+    path: 'category/:category/:page',
     component: PacksListComponent,
   },
   {

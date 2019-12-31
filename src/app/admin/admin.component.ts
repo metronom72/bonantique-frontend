@@ -6,7 +6,6 @@ import { Category } from '../common/category';
   selector: 'ba-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
-  providers: [CategoriesService]
 })
 export class AdminComponent implements OnInit {
 

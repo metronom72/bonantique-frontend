@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
   menu = [
     {
       label: 'Банкноты',
-      link: 'packs',
+      link: 'catalog',
     },
     {
       label: 'Inspiration',

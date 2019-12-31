@@ -8,7 +8,6 @@ import { Category } from '../../../common/category';
   selector: 'ba-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  providers: [CategoriesService]
 })
 export class EditComponent implements OnInit {
   public categoryForm = new FormGroup({
@@ -32,14 +31,16 @@ export class EditComponent implements OnInit {
         this.init(this.categories);
       }
     });
-    this.categoriesService.categories
-      .subscribe(this.init);
+    this.categories = this.categoriesService.categories;
+    // this.categoriesService.categories
+    //   .subscribe(this.init);
   }
 
   private init = (categories: Category[]) => {
     this.categories = categories;
     if (this.route.snapshot.params.slug === 'new') {
       this.type = 'new';
+
       this.categoryForm.reset({
         title: '',
         slug: '',

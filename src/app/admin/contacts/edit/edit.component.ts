@@ -8,7 +8,6 @@ import { Contact } from '../../../common/contact';
   selector: 'ba-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  providers: [ContactsService]
 })
 export class EditComponent implements OnInit {
   public contactForm = new FormGroup({

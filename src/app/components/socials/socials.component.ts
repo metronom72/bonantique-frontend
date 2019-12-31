@@ -14,11 +14,14 @@ export class SocialsComponent implements OnInit {
   socials: Contact[] = [];
 
   ngOnInit() {
-    this.contactsService.contacts.subscribe(
-      (contacts: Contact[]) => {
-        this.socials = contacts.filter(contact => contact.scope === ContactScopeEnum.SOCIALS);
-      }
-    );
+    this.socials = this.contactsService.contacts.filter(contact => contact.scope === ContactScopeEnum.SOCIALS);
+
+    this.contactsService.initialize
+      .subscribe(value => {
+        if (value) {
+          this.socials = this.contactsService.contacts.filter(contact => contact.scope === ContactScopeEnum.SOCIALS);
+        }
+      });
   }
 
 }

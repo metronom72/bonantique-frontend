@@ -6,7 +6,6 @@ import { Contact } from '../../common/contact';
   selector: 'ba-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
-  providers: [ContactsService]
 })
 export class ContactsComponent implements OnInit {
 

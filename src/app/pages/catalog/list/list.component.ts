@@ -3,6 +3,8 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { generate } from 'rxjs';
 import { CategoriesService } from '../../../common/services/categories.service';
 import { Category } from '../../../common/category';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 const generateProduct = () => ({
   title: 'Хрущевские фантики',
@@ -21,10 +23,10 @@ export class PacksListComponent implements OnInit {
 
   paths: Array<{label: string, link: string}> = [{
     label: 'КАТАЛОГ',
-    link: null
+    link: '/catalog',
   }, {
-    label: 'НАБОРЫ БАНКНОТ',
-    link: 'list'
+    label: 'СССР',
+    link: '/category/ussr',
   }];
 
   categories: Category[] = [];
@@ -59,14 +61,22 @@ export class PacksListComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private categoriesService: CategoriesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    this.categoriesService.categories
-      .subscribe((categories: Category[]) => {
-        const parentCategory = categories.find(category => category.slug === 'banknotes');
-        this.categories = categories.filter(category => category.parent_category_id === parentCategory.id);
-      })
+    const parentCategory = this.categoriesService.categories.find(category => category.slug === 'banknotes');
+    this.categories = this.categoriesService.categories.filter(category => category.parent_category_id === parentCategory.id);
+
+    this.categoriesService.initialize
+      .subscribe(value => {
+        if (value) {
+          const parentCategory = this.categoriesService.categories.find(category => category.slug === 'banknotes');
+          this.categories = this.categoriesService.categories.filter(category => category.parent_category_id === parentCategory.id);
+        }
+      });
+
     this.breakpointObserver
       .observe(['(max-width: 1280px)', '(max-width: 900px)'])
       .subscribe((state: BreakpointState) => {

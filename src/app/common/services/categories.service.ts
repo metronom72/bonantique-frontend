@@ -8,22 +8,26 @@ import { Category } from '../category';
   providedIn: 'root',
 })
 export class CategoriesService {
-  public categories: Subject<Category[]> = new Subject<Category[]>();
+  public categories: Category[] = [];
   public errors: Subject<any> = new Subject<any>();
+  public initialize: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private http: HttpClient,
     private constantsService: ConstantsService
   ) {
+    this.initialize.next(false);
     this.getCategories()
       .subscribe(
         (values: {data: Category[]}) => {
-          this.categories.next(values.data);
+          this.categories = values.data;
           this.errors.next(null);
+          this.initialize.next(true);
         },
         (errors: {errors: object[]}) => {
-          this.categories.next([]);
+          this.categories = [];
           this.errors.next(errors.errors);
+          this.initialize.next(true);
         }
       );
   }
@@ -32,11 +36,13 @@ export class CategoriesService {
     this.getCategories()
       .subscribe(
         (values: {data: Category[]}) => {
-          this.categories.next(values.data);
+          this.categories = values.data;
+          // this.categories.next(values.data);
           this.errors.next(null);
         },
         (errors: {errors: object[]}) => {
-          this.categories.next([]);
+          this.categories = [];
+          // this.categories.next([]);
           this.errors.next(errors.errors);
         }
       );
