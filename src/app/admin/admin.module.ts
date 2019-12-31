@@ -4,10 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ClarityModule } from '@clr/angular';
 import { ContactsComponent } from './contacts/contacts.component';
-import { TableComponent } from './contacts/table/table.component';
+import { TableComponent as ContactsTableComponent } from './contacts/table/table.component';
 import { EditComponent as EditContactComponent } from './contacts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent as EditCategoryComponent } from './categories/edit/edit.component';
+import { BondsComponent } from './bonds/bonds.component';
+import { TableComponent as BondsTableComponent } from './bonds/table/table.component';
+import { EditComponent as EditBondComponent } from './bonds/edit/edit.component';
 
 
 const routes: Routes = [
@@ -27,6 +30,10 @@ const routes: Routes = [
         path: 'categories/:slug/edit',
         component: EditCategoryComponent,
       },
+      {
+        path: 'bonds',
+        component: BondsComponent,
+      },
     ]
   },
 ];
@@ -35,9 +42,12 @@ const routes: Routes = [
   declarations: [
     AdminComponent,
     ContactsComponent,
-    TableComponent,
+    ContactsTableComponent,
     EditContactComponent,
     EditCategoryComponent,
+    BondsComponent,
+    BondsTableComponent,
+    EditBondComponent,
   ],
   imports: [
     ReactiveFormsModule,
