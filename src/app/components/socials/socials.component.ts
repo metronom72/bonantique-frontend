@@ -6,9 +6,6 @@ import { ContactsService } from '../../common/services/contacts.service';
   selector: 'ba-socials',
   templateUrl: './socials.component.html',
   styleUrls: ['./socials.component.scss'],
-  providers: [
-    ContactsService
-  ],
 })
 export class SocialsComponent implements OnInit {
 

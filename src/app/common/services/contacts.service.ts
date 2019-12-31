@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from './constants.service';
 import { Contact } from '../contact';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ContactsService {
   public contacts: Subject<Contact[]> = new Subject<Contact[]>();
   public errors: Subject<any> = new Subject<any>();

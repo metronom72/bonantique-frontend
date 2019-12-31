@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from './constants.service';
 import { Category } from '../category';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CategoriesService {
   public categories: Subject<Category[]> = new Subject<Category[]>();
   public errors: Subject<any> = new Subject<any>();
@@ -13,6 +15,20 @@ export class CategoriesService {
     private http: HttpClient,
     private constantsService: ConstantsService
   ) {
+    this.getCategories()
+      .subscribe(
+        (values: {data: Category[]}) => {
+          this.categories.next(values.data);
+          this.errors.next(null);
+        },
+        (errors: {errors: object[]}) => {
+          this.categories.next([]);
+          this.errors.next(errors.errors);
+        }
+      );
+  }
+
+  public refresh = () => {
     this.getCategories()
       .subscribe(
         (values: {data: Category[]}) => {

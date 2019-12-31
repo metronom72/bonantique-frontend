@@ -37,7 +37,6 @@ export class EditComponent implements OnInit {
   }
 
   private init = (categories: Category[]) => {
-    console.log(categories);
     this.categories = categories;
     if (this.route.snapshot.params.slug === 'new') {
       this.type = 'new';
@@ -61,30 +60,26 @@ export class EditComponent implements OnInit {
   onSubmit = () => {
     if (this.route.snapshot.params.slug !== 'new') {
       const category: Category = this.categories.find(c => c.slug === this.route.snapshot.params.slug);
-      this.categoriesService.updateCategory(category.slug, this.categoryForm.value)
+      this.categoriesService.updateCategory(category.slug, {
+        ...this.categoryForm.value,
+        parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10),
+      })
         .subscribe(
           (values: any) => {
-            this.categoriesService.getCategories()
-              .subscribe(
-                (vals: { data: Category[] }) => {
-                  this.categoriesService.categories.next(vals.data);
-                }
-              );
+            this.categoriesService.refresh();
           },
           (errors: any) => {
             // pass
           }
         );
     } else {
-      this.categoriesService.createCategory(this.categoryForm.value)
+      this.categoriesService.createCategory({
+        ...this.categoryForm.value,
+        parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10)
+      })
         .subscribe(
           (values: any) => {
-            this.categoriesService.getCategories()
-              .subscribe(
-                (vals: { data: Category[] }) => {
-                  this.categoriesService.categories.next(vals.data);
-                }
-              );;
+            this.categoriesService.refresh();
           },
           (errors: any) => {
             // pass
