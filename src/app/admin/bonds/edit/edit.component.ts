@@ -33,13 +33,13 @@ export class BondsEditComponent implements OnInit {
     amount: new FormControl(1, Validators.required), // +
     product_type: new FormControl('bond', Validators.required), // +
     bond_currency: new FormControl(null, Validators.required), // +
-    bond_value: new FormControl(null, Validators.required), // -
-    bond_serial: new FormControl(null, Validators.required), // -
-    bond_number: new FormControl(null, Validators.required), // -
-    bond_country: new FormControl(null, Validators.required), // -
-    is_copy: new FormControl(false, Validators.required), // -
-    available: new FormControl(false, Validators.required), // -
-    category_id: new FormControl(null, Validators.required), // -
+    bond_value: new FormControl(null, Validators.required), // +
+    bond_serial: new FormControl(null), // +
+    bond_number: new FormControl(null), // +
+    bond_country: new FormControl(null, Validators.required), // +
+    is_copy: new FormControl(false, Validators.required), // +
+    available: new FormControl(false, Validators.required), // +
+    category_id: new FormControl(null, Validators.required), // +
   });
   public type: string;
   public categories: Category[] = [];
