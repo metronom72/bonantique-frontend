@@ -32,6 +32,22 @@ export class ContactsService {
       );
   }
 
+  public refresh = () => {
+    this.getContacts()
+      .subscribe(
+        (values: {data: Contact[]}) => {
+          this.contacts = values.data;
+          this.initialize.next(true);
+          this.errors.next(null);
+        },
+        (errors: {errors: object[]}) => {
+          this.contacts = [];
+          this.initialize.next(true);
+          this.errors.next(errors.errors);
+        }
+      );
+  }
+
   public createContact = (contact: Contact) => {
     this.errors.next(null);
     return this.http.post(`${this.constantsService.baseAppUrl}admin/contacts`, { new_contact: contact });

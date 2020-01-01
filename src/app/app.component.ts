@@ -27,10 +27,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.contactsService.initialize
-      .subscribe((value: boolean) => {
-        this.contactsLoaded = value;
-        console.log(value);
-      })
+      .subscribe((value: boolean) => this.contactsLoaded = value)
 
     this.categoriesService.initialize
       .subscribe((value: boolean) => this.categoriesLoaded = value)

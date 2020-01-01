@@ -1,1 +1,6 @@
-<p>edit works!</p>
+<div>
+  <h1>{{this.type === 'edit' ? 'Обновление Категории' : 'Создание Новой Категории'}}</h1>
+</div>
+<form clrForm [formGroup]="bondForm" (submit)="onSubmit()">
+  <button [disabled]="bondForm.invalid" class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
+</form>

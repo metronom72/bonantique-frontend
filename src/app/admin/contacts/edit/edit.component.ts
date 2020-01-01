@@ -25,10 +25,10 @@ export class ContactsEditComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     if (this.route.snapshot.params.id !== 'new') {
       this.type = 'edit';
-      this.resetForm();
+      await this.resetForm();
     } else {
       this.type = 'new';
     }
@@ -46,7 +46,9 @@ export class ContactsEditComponent implements OnInit {
     }
   }
 
-  private refreshContacts = () => this.contactsService.getContacts();
+  private refreshContacts = () => {
+    this.contactsService.refresh();
+  }
 
   private resetForm = async () => {
     const contact = this.contactsService.contacts.find((c: Contact): boolean => c.id.toString() === this.route.snapshot.params.id);

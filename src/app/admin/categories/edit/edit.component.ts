@@ -57,18 +57,18 @@ export class CategoriesEditComponent implements OnInit {
         ...this.categoryForm.value,
         parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10),
       })
-        .subscribe(() => {
+        .subscribe(async () => {
           this.refreshCategories();
-          this.resetForm(newCategory);
+          await this.resetForm(newCategory);
         });
     } else {
       this.categoriesService.createCategory({
         ...this.categoryForm.value,
         parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10)
       })
-        .subscribe(() => {
+        .subscribe(async () => {
           this.refreshCategories();
-          this.resetForm(newCategory);
+          await this.resetForm(newCategory);
         });
     }
   }

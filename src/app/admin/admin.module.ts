@@ -34,6 +34,10 @@ const routes: Routes = [
         path: 'bonds',
         component: BondsComponent,
       },
+      {
+        path: 'bonds/:id/edit',
+        component: BondsEditComponent,
+      },
     ]
   },
 ];
