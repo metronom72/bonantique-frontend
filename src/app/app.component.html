@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="loaded">
   <ba-header *ngIf="!isAdmin"></ba-header>
   <div [class.content-wrapper]="!isAdmin" [class.admin]="isAdmin">
     <div [class.content]="!isAdmin" [class.admin]="isAdmin">

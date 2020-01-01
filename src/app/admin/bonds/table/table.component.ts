@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ba-table',
+  selector: 'ba-table-bonds',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class BondsTableComponent implements OnInit {
 
   constructor() { }
 

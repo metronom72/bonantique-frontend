@@ -2,19 +2,21 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from '../../../common/contact';
 
 @Component({
-  selector: 'ba-table',
+  selector: 'ba-table-contacts',
   templateUrl: './table.component.html',
   styleUrls: [
     './table.component.scss',
   ]
 })
-export class TableComponent implements OnInit {
+export class ContactsTableComponent implements OnInit {
 
   @Input()
   contacts: Contact[] = [];
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.contacts)
+  }
 
 }

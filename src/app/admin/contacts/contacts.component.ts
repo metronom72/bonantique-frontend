@@ -14,10 +14,13 @@ export class ContactsComponent implements OnInit {
   constructor(private contactsService: ContactsService) { }
 
   ngOnInit() {
-    this.contactsService.contacts
+    this.contacts = this.contactsService.contacts;
+    this.contactsService.initialize
       .subscribe(
-        (contacts: Contact[]) => {
-          this.contacts = contacts;
+        (value: boolean): void => {
+          if (value) {
+            this.contacts = this.contactsService.contacts;
+          }
         }
       );
   }

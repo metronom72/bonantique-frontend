@@ -4,13 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ClarityModule } from '@clr/angular';
 import { ContactsComponent } from './contacts/contacts.component';
-import { TableComponent as ContactsTableComponent } from './contacts/table/table.component';
-import { EditComponent as EditContactComponent } from './contacts/edit/edit.component';
+import { ContactsTableComponent } from './contacts/table/table.component';
+import { ContactsEditComponent } from './contacts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditComponent as EditCategoryComponent } from './categories/edit/edit.component';
+import { CategoriesEditComponent } from './categories/edit/edit.component';
 import { BondsComponent } from './bonds/bonds.component';
-import { TableComponent as BondsTableComponent } from './bonds/table/table.component';
-import { EditComponent as EditBondComponent } from './bonds/edit/edit.component';
+import { BondsTableComponent } from './bonds/table/table.component';
+import { BondsEditComponent } from './bonds/edit/edit.component';
 
 
 const routes: Routes = [
@@ -24,11 +24,11 @@ const routes: Routes = [
       },
       {
         path: 'contacts/:id/edit',
-        component: EditContactComponent,
+        component: ContactsEditComponent,
       },
       {
         path: 'categories/:slug/edit',
-        component: EditCategoryComponent,
+        component: CategoriesEditComponent,
       },
       {
         path: 'bonds',
@@ -43,11 +43,11 @@ const routes: Routes = [
     AdminComponent,
     ContactsComponent,
     ContactsTableComponent,
-    EditContactComponent,
-    EditCategoryComponent,
+    ContactsEditComponent,
+    CategoriesEditComponent,
     BondsComponent,
     BondsTableComponent,
-    EditBondComponent,
+    BondsEditComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -5,11 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../../../common/contact';
 
 @Component({
-  selector: 'ba-edit',
+  selector: 'ba-edit-contacts',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class ContactsEditComponent implements OnInit {
   public contactForm = new FormGroup({
     link: new FormControl(null),
     scope: new FormControl(null, Validators.required),
@@ -28,38 +28,32 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.id !== 'new') {
       this.type = 'edit';
-      const contact = this.contactsService.contacts.find(c => c.id.toString() === this.route.snapshot.params.id);
-      if (contact) {
-        this.contactForm.reset(contact);
-      } else {
-        this.router.navigateByUrl('/admin/contacts');
-      }
+      this.resetForm();
     } else {
       this.type = 'new';
     }
   }
 
-  onSubmit = () => {
+  onSubmit = (): void => {
     if (this.route.snapshot.params.id !== 'new') {
-      this.contactsService.updateContact(parseInt(this.route.snapshot.params.id, 10), this.contactForm.value)
-        .subscribe(
-          (values: { data: Contact }) => {
-            this.contactsService.getContacts();
-          },
-          (errors: any) => {
-            // pass
-          }
-        );
+      this.contactsService.updateContact(
+        parseInt(this.route.snapshot.params.id, 10), this.contactForm.value)
+          .subscribe(this.refreshContacts);
     } else {
-      this.contactsService.createContact(this.contactForm.value)
-        .subscribe(
-          (values: { data: Contact }) => {
-            this.contactsService.getContacts();
-          },
-          (errors: any) => {
-            // pass
-          }
-        );
+      this.contactsService.createContact(
+        this.contactForm.value)
+          .subscribe(this.refreshContacts);
+    }
+  }
+
+  private refreshContacts = () => this.contactsService.getContacts();
+
+  private resetForm = async () => {
+    const contact = this.contactsService.contacts.find((c: Contact): boolean => c.id.toString() === this.route.snapshot.params.id);
+    if (contact) {
+      this.contactForm.reset(contact);
+    } else {
+      await this.router.navigateByUrl('/admin/contacts');
     }
   }
 

@@ -3,7 +3,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { generate } from 'rxjs';
 import { CategoriesService } from '../../../common/services/categories.service';
 import { Category } from '../../../common/category';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 const generateProduct = () => ({
@@ -60,20 +60,18 @@ export class PacksListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const parentCategory = this.categoriesService.categories.find(category => category.slug === 'banknotes');
-    this.categories = this.categoriesService.categories.filter(category => category.parent_category_id === parentCategory.id);
+    this.setCategories();
 
     this.categoriesService.initialize
       .subscribe(value => {
         if (value) {
-          const parentCategory = this.categoriesService.categories.find(category => category.slug === 'banknotes');
-          this.categories = this.categoriesService.categories.filter(category => category.parent_category_id === parentCategory.id);
+          this.setCategories();
         }
       });
 
     this.breakpointObserver
       .observe(['(max-width: 1280px)', '(max-width: 900px)'])
-      .subscribe((state: BreakpointState) => {
+      .subscribe((state: BreakpointState): void => {
         if (state.matches) {
           if (state.breakpoints['(max-width: 1280px)'] && state.breakpoints['(max-width: 900px)']) {
             this.isTablet = false;
@@ -88,44 +86,55 @@ export class PacksListComponent implements OnInit {
         }
       });
 
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params: Params): void => {
       if (params.category) {
-        const currentCategory = this.categoriesService.categories.find(category => category.slug === params.category);
-        if (currentCategory) {
-          if (currentCategory.parent_category_id) {
-            const parentCategory = this.categoriesService.categories.find(category => category.id === currentCategory.parent_category_id);
-            if (parentCategory) {
-              this.paths = [parentCategory, currentCategory];
-            } else {
-              this.paths = [currentCategory];
-            }
-          } else {
-            this.paths = [currentCategory];
-          }
-        }
+        this.setBreadcrumbs(params);
       }
-    })
+    });
   }
 
-  onNextPage = () => {
+  public onNextPage = (): void => {
     if (this.currentPage === this.totalPages) {
       return;
     }
     this.currentPage = this.currentPage + 1;
   }
 
-  onPreviousPage = () => {
+  public onPreviousPage = (): void => {
     if (this.currentPage === 1) {
       return;
     }
     this.currentPage = this.currentPage - 1;
   }
 
-  onSelectPage = (page: number) => {
+  public onSelectPage = (page: number): void => {
     if (page === this.currentPage) {
       return;
     }
     this.currentPage = page;
+  }
+
+  private setBreadcrumbs = (routeParams: Params): void => {
+    const currentCategory = this.categoriesService.categories.find((category: Category) =>
+      category.slug === routeParams.category);
+    if (currentCategory) {
+      if (currentCategory.parent_category_id) {
+        const parentCategory = this.categoriesService.categories.find((category: Category) =>
+          category.id === currentCategory.parent_category_id);
+        if (parentCategory) {
+          this.paths = [parentCategory, currentCategory];
+        } else {
+          this.paths = [currentCategory];
+        }
+      } else {
+        this.paths = [currentCategory];
+      }
+    }
+  }
+
+  private setCategories = (): void => {
+    const parentCategory = this.categoriesService.categories.find(category => category.slug === 'banknotes');
+    this.categories = this.categoriesService.categories.filter(category => category.parent_category_id === parentCategory.id);
   }
 
 }

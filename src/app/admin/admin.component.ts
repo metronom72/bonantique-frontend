@@ -14,12 +14,13 @@ export class AdminComponent implements OnInit {
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-    this.categoriesService.categories
-      .subscribe(
-        (categories: Category[]) => {
-          this.categories = categories;
-        }
-      );
+    this.categories = this.categoriesService.categories;
+
+    this.categoriesService.initialize.subscribe((value: boolean): void => {
+      if (value) {
+        this.categories = this.categoriesService.categories;
+      }
+    });
   }
 
 }

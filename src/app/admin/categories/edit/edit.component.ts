@@ -4,12 +4,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Category } from '../../../common/category';
 
+const newCategory: Category = {
+  title: '',
+  slug: '',
+  active: true,
+}
+
 @Component({
-  selector: 'ba-edit',
+  selector: 'ba-edit-categories',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class CategoriesEditComponent implements OnInit {
   public categoryForm = new FormGroup({
     title: new FormControl(null, Validators.required),
     slug: new FormControl(null, Validators.required),
@@ -26,35 +32,21 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.init(this.categories);
-      }
-    });
+    this.handleRoute();
     this.categories = this.categoriesService.categories;
-    // this.categoriesService.categories
-    //   .subscribe(this.init);
   }
 
-  private init = (categories: Category[]) => {
+  private init = async (categories: Category[]) => {
     this.categories = categories;
+
     if (this.route.snapshot.params.slug === 'new') {
       this.type = 'new';
 
-      this.categoryForm.reset({
-        title: '',
-        slug: '',
-        active: true,
-      });
+      await this.resetForm(newCategory);
     } else {
       this.type = 'edit';
 
-      const category = categories.find(c => c.slug === this.route.snapshot.params.slug);
-      if (category) {
-        this.categoryForm.reset(category);
-      } else {
-        this.router.navigateByUrl('/admin');
-      }
+      await this.resetForm();
     }
   }
 
@@ -65,28 +57,43 @@ export class EditComponent implements OnInit {
         ...this.categoryForm.value,
         parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10),
       })
-        .subscribe(
-          (values: any) => {
-            this.categoriesService.refresh();
-          },
-          (errors: any) => {
-            // pass
-          }
-        );
+        .subscribe(() => {
+          this.refreshCategories();
+          this.resetForm(newCategory);
+        });
     } else {
       this.categoriesService.createCategory({
         ...this.categoryForm.value,
         parent_category_id: parseInt(this.categoryForm.value.parent_category_id, 10)
       })
-        .subscribe(
-          (values: any) => {
-            this.categoriesService.refresh();
-          },
-          (errors: any) => {
-            // pass
-          }
-        );
+        .subscribe(() => {
+          this.refreshCategories();
+          this.resetForm(newCategory);
+        });
     }
   }
+
+  private handleRoute = () => {
+    this.router.events.subscribe(async event => {
+      if (event instanceof NavigationEnd) {
+        await this.init(this.categories);
+      }
+    });
+  }
+
+  private resetForm = async (value?: Category) => {
+    if (value) {
+      this.categoryForm.reset(value);
+    } else {
+      const category = this.categoriesService.categories.find((c: Category): boolean => c.slug === this.route.snapshot.params.slug);
+      if (category) {
+        this.categoryForm.reset(category);
+      } else {
+        await this.router.navigateByUrl('/admin');
+      }
+    }
+  }
+
+  private refreshCategories = () => this.categoriesService.refresh();
 
 }

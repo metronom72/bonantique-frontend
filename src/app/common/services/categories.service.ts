@@ -37,12 +37,12 @@ export class CategoriesService {
       .subscribe(
         (values: {data: Category[]}) => {
           this.categories = values.data;
-          // this.categories.next(values.data);
+          this.initialize.next(true);
           this.errors.next(null);
         },
         (errors: {errors: object[]}) => {
           this.categories = [];
-          // this.categories.next([]);
+          this.initialize.next(true);
           this.errors.next(errors.errors);
         }
       );
@@ -53,7 +53,7 @@ export class CategoriesService {
     return this.http.post(`${this.constantsService.baseAppUrl}admin/categories`, { new_category: category });
   }
 
-  public updateCategory = (id: string, category: Category) => {
+  public updateCategory = (id: string | number, category: Category) => {
     this.errors.next(null);
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/categories/${id}`, { category });
   }
