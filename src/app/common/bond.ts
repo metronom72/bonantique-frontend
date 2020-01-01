@@ -13,8 +13,8 @@ export interface Bond {
   bond_id?: number;
   bond_currency: string;
   bond_value: string;
-  bond_serial: string;
-  bond_number: string;
+  bond_serial?: string;
+  bond_number?: string;
   bond_country: string;
   is_copy: boolean;
   // category

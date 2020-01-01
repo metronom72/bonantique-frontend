@@ -1,6 +1,60 @@
 <div>
-  <h1>{{this.type === 'edit' ? 'Обновление Категории' : 'Создание Новой Категории'}}</h1>
+  <h1>{{this.type === 'edit' ? 'Обновление Боны>' : 'Добавление Новой Боны'}}</h1>
 </div>
 <form clrForm [formGroup]="bondForm" (submit)="onSubmit()">
-  <button [disabled]="bondForm.invalid" class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Создать'}}</button>
+  <clr-input-container>
+    <label>Наименование Боны</label>
+    <input clrInput formControlName="title" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-textarea-container>
+    <label>Описание Боны</label>
+    <textarea clrTextarea formControlName="description"></textarea>
+  </clr-textarea-container>
+  <clr-input-container>
+    <label>В наличии</label>
+    <input clrInput formControlName="amount" type="number" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Тип товара</label>
+    <input clrInput formControlName="product_type" disabled />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Валюта Боны</label>
+    <input clrInput formControlName="bond_currency" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Номинал Боны</label>
+    <input clrInput formControlName="bond_value" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Серия</label>
+    <input clrInput formControlName="bond_serial" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Номер</label>
+    <input clrInput formControlName="bond_number" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Страна эмиссии</label>
+    <input clrInput formControlName="bond_country" />
+    <clr-control-error>Поле обязательно для заполнения</clr-control-error>
+  </clr-input-container>
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox formControlName="available" />
+      <label>Выводить данный товар на сайте</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox formControlName="is_copy" />
+      <label>Это копия оригинального товара?</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+  <button [disabled]="bondForm.invalid" class="btn btn-primary">{{this.type === 'edit' ? 'Обновить' : 'Добавить'}}</button>
 </form>

@@ -14,8 +14,6 @@ const newBond: Bond = {
   product_type: 'bond',
   bond_currency: '',
   bond_value: '',
-  bond_serial: '',
-  bond_number: '',
   bond_country: '',
   is_copy: false,
   category_id: null,
@@ -28,19 +26,20 @@ const newBond: Bond = {
 })
 export class BondsEditComponent implements OnInit {
   public bondForm = new FormGroup({
-    title: new FormControl(null, Validators.required),
-    description: new FormControl(null),
-    prices: new FormArray([], Validators.required),
-    valid_till: new FormControl(''),
-    amount: new FormControl(1, Validators.required),
-    product_type: new FormControl('bond', Validators.required),
-    bond_currency: new FormControl(null, Validators.required),
-    bond_value: new FormControl(null, Validators.required),
-    bond_serial: new FormControl(null, Validators.required),
-    bond_number: new FormControl(null, Validators.required),
-    bond_country: new FormControl(null, Validators.required),
-    is_copy: new FormControl(false, Validators.required),
-    category_id: new FormControl(null, Validators.required),
+    title: new FormControl(null, Validators.required), // +
+    description: new FormControl(null), // +
+    prices: new FormArray([], Validators.required), // -
+    valid_till: new FormControl(''), // -
+    amount: new FormControl(1, Validators.required), // +
+    product_type: new FormControl('bond', Validators.required), // +
+    bond_currency: new FormControl(null, Validators.required), // +
+    bond_value: new FormControl(null, Validators.required), // -
+    bond_serial: new FormControl(null, Validators.required), // -
+    bond_number: new FormControl(null, Validators.required), // -
+    bond_country: new FormControl(null, Validators.required), // -
+    is_copy: new FormControl(false, Validators.required), // -
+    available: new FormControl(false, Validators.required), // -
+    category_id: new FormControl(null, Validators.required), // -
   });
   public type: string;
   public categories: Category[] = [];
