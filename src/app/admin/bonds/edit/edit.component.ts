@@ -29,7 +29,7 @@ export class BondsEditComponent implements OnInit {
   public bondForm = new FormGroup({
     title: new FormControl(null, Validators.required), // +
     description: new FormControl(null), // +
-    prices: new FormControl([], Validators.required), // -
+    prices: new FormControl([], Validators.required), // +
     valid_till: new FormControl(''), // -
     amount: new FormControl(1, Validators.required), // +
     product_type: new FormControl({value: 'bond', disabled: true}, Validators.required), // +
@@ -127,7 +127,6 @@ export class BondsEditComponent implements OnInit {
   }
 
   private removePrice = (price: number) => {
-    console.log(price)
     if (!this.bondForm.controls.prices.value.includes(price)) {
       return;
     }

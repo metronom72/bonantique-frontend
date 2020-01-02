@@ -1,8 +1,34 @@
-.clr-form-control {
-  input, textarea {
-    width: 70% !important;
+::ng-deep .clr-form-control {
+  width: 100%;
+  textarea {
+    width: 100% !important;
+  }
+  label {
+    min-width: 30%;
+    max-width: 30%;
+  }
+  .clr-control-container {
+    max-width: 70%;
+    min-width: 70%;
+  }
+  .clr-input-group {
+    width: 100%;
   }
 }
+::ng-deep .clr-checkbox-wrapper {
+  width: 100%;
+  min-width: 100%;
+  margin-left: 45%;
+  display: block;
+  label {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+::ng-deep .clr-input {
+  width: 100%;
+}
+
 .remove-price {
   &:hover {
     cursor: pointer;
