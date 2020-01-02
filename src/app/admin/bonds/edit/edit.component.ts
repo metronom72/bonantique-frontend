@@ -123,6 +123,7 @@ export class BondsEditComponent implements OnInit {
     if (!price || this.bondForm.controls.prices.value.includes(price)) {
       return;
     }
+    this.bondForm.controls._price.patchValue('')
     this.bondForm.controls.prices.patchValue([...this.bondForm.value.prices, price]);
   }
 
