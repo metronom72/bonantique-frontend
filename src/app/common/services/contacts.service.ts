@@ -58,8 +58,11 @@ export class ContactsService {
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/contacts/${id}`, { contact });
   }
 
-  public getContacts = () => {
+  public getContacts = (admin = false) => {
     this.errors.next(null);
-    return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`);
+    if (admin) {
+      return this.http.get(`${this.constantsService.baseAppUrl}admin/contacts`);
+    }
+    return this.http.get(`${this.constantsService.baseAppUrl}contacts`);
   }
 }

@@ -3,3 +3,8 @@
     width: 70% !important;
   }
 }
+.remove-price {
+  &:hover {
+    cursor: pointer;
+  }
+}

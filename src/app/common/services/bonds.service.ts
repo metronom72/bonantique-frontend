@@ -59,8 +59,11 @@ export class BondsService {
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/bonds/${id}`, { bond });
   }
 
-  public getBonds = () => {
+  public getBonds = (admin = false) => {
     this.errors.next(null);
-    return this.http.get(`${this.constantsService.baseAppUrl}admin/bonds`);
+    if (admin) {
+      return this.http.get(`${this.constantsService.baseAppUrl}admin/bonds`);
+    }
+    return this.http.get(`${this.constantsService.baseAppUrl}bonds`);
   }
 }

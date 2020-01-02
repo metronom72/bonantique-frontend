@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClarityModule } from '@clr/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,8 +27,6 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { SidenavCatalogComponent } from './components/sidenav-catalog/sidenav-catalog.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { ClarityModule } from '@clr/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {

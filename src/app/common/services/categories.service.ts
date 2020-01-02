@@ -58,8 +58,11 @@ export class CategoriesService {
     return this.http.patch(`${this.constantsService.baseAppUrl}admin/categories/${id}`, { category });
   }
 
-  public getCategories = () => {
+  public getCategories = (admin = false) => {
     this.errors.next(null);
-    return this.http.get(`${this.constantsService.baseAppUrl}admin/categories`);
+    if (admin) {
+      return this.http.get(`${this.constantsService.baseAppUrl}admin/categories`);
+    }
+    return this.http.get(`${this.constantsService.baseAppUrl}categories`);
   }
 }

@@ -17,8 +17,29 @@
     <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-input-container>
   <clr-input-container>
+    <label>Установить цену</label>
+    <input clrInput formControlName="_price" type="number" (keypress)="addPrice($event)" />
+    <clr-control-helper>
+      Предыдущая цена. На сайте выводится текущая и перечеркнутая предыдущая.
+    </clr-control-helper>
+  </clr-input-container>
+  <div>
+    <div>
+      <span
+        class="label clickable"
+        *ngFor="let price of bondForm.controls.prices.value; index as i"
+      >
+        {{price}}
+        <span *ngIf="i === bondForm.controls.prices.value.length - 2" class="badge">Последняя цена</span>
+        <span *ngIf="i === bondForm.controls.prices.value.length - 1" class="badge">Текущая цена</span>
+        &nbsp;&nbsp;
+        <span class="badge remove-price" (click)="removePrice(price)">×</span>
+      </span>
+    </div>
+  </div>
+  <clr-input-container>
     <label>Тип товара</label>
-    <input clrInput formControlName="product_type" disabled />
+    <input clrInput formControlName="product_type" />
     <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-input-container>
   <clr-input-container>
