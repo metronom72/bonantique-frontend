@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from '../../../common/services/categories.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Bond } from '../../../common/bond';
@@ -40,7 +40,7 @@ export class BondsEditComponent implements OnInit {
     bond_country: new FormControl(null, Validators.required), // +
     is_copy: new FormControl(false, Validators.required), // +
     available: new FormControl(true, Validators.required), // +
-    category_id: new FormControl(null, Validators.required), // -
+    category_ids: new FormControl([], Validators.required), // -
     _price: new FormControl(null), // +
   });
   public type: string;
@@ -131,7 +131,29 @@ export class BondsEditComponent implements OnInit {
     if (!this.bondForm.controls.prices.value.includes(price)) {
       return;
     }
-    this.bondForm.controls.prices.setValue(this.bondForm.value.prices.filter(p => p !== price));
+    this.bondForm.controls.prices.patchValue(this.bondForm.value.prices.filter(p => p !== price));
+  }
+
+  private addCategory = (event) => {
+    if (!event.target.value) {
+      return;
+    }
+    const categoryId = parseInt(event.target.value, 10)
+    if (this.bondForm.controls.category_ids.value.includes(categoryId)) {
+      return;
+    }
+    this.bondForm.controls.category_ids.patchValue([...this.bondForm.value.category_ids, categoryId])
+  }
+
+  private removeCategory = (categoryId: number) => {
+    if (!this.bondForm.controls.category_ids.value.includes(categoryId)) {
+      return;
+    }
+    this.bondForm.controls.category_ids.patchValue(this.bondForm.value.category_ids.filter(c => c !== categoryId));
+  }
+
+  private getCategory = (categoryId: number) => {
+    return this.categories.find(category => category.id === categoryId);
   }
 
 }

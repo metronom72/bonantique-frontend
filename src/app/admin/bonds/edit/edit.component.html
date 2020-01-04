@@ -7,6 +7,26 @@
     <input clrInput formControlName="title" />
     <clr-control-error>Поле обязательно для заполнения</clr-control-error>
   </clr-input-container>
+  <clr-select-container>
+    <label>Категория Боны</label>
+    <select clrSelect (change)="addCategory($event)" >
+      <option value="null">Ничего не выбрано</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{category.title}} - {{category.slug}}
+      </option>
+    </select>
+  </clr-select-container>
+  <div style="padding-left: 265px;">
+    <div>
+      <span
+        class="label clickable"
+        *ngFor="let categoryId of bondForm.controls.category_ids.value; index as i"
+      >
+        {{getCategory(categoryId).title}} - {{getCategory(categoryId).slug}}
+        <span class="badge remove-price" (click)="removeCategory(categoryId)">×</span>
+      </span>
+    </div>
+  </div>
   <clr-textarea-container>
     <label>Описание Боны</label>
     <textarea clrTextarea formControlName="description"></textarea>
