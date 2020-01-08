@@ -10,6 +10,7 @@ import { Bond } from '../bond';
 })
 export class BondsService {
   public bonds: Bond[] = [];
+  public bondsToImport: Bond[] = [];
   public errors: Subject<any> = new Subject<any>();
   public initialize: Subject<boolean> = new Subject<boolean>();
 

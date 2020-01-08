@@ -11,6 +11,7 @@ import { CategoriesEditComponent } from './categories/edit/edit.component';
 import { BondsComponent } from './bonds/bonds.component';
 import { BondsTableComponent } from './bonds/table/table.component';
 import { BondsEditComponent } from './bonds/edit/edit.component';
+import { BondsImportComponent } from './bonds/import/import.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
         path: 'bonds/:id/edit',
         component: BondsEditComponent,
       },
+      {
+        path: 'bonds/import',
+        component: BondsImportComponent,
+      },
     ]
   },
 ];
@@ -52,6 +57,7 @@ const routes: Routes = [
     BondsComponent,
     BondsTableComponent,
     BondsEditComponent,
+    BondsImportComponent,
   ],
   imports: [
     ReactiveFormsModule,

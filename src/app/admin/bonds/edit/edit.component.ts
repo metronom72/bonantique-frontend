@@ -17,7 +17,7 @@ const newBond: Bond = {
   bond_value: '',
   bond_country: '',
   is_copy: false,
-  category_id: null,
+  category_ids: null,
 }
 
 @Component({

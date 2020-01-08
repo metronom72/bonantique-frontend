@@ -18,5 +18,5 @@ export interface Bond {
   bond_country: string;
   is_copy: boolean;
   // category
-  category_id: number;
+  category_ids: number;
 }

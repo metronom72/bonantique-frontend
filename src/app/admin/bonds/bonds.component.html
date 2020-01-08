@@ -1,5 +1,9 @@
 <div class="admin-header">
   <h1>Банкноты</h1>
   <button class="btn btn-primary" [routerLink]="['', 'admin', 'bonds', 'new', 'edit']">Добавить Бону</button>
+  <label for="bonds-import">
+    Импортировать CSV
+    <input type="file" id="bonds-import" (change)="handleFileInput($event)" />
+  </label>
 </div>
 <p>bonds works!</p>
