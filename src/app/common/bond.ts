@@ -19,4 +19,5 @@ export interface Bond {
   is_copy: boolean;
   // category
   category_ids: number;
+  quality: string;
 }
