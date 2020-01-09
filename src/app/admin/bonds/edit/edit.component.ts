@@ -18,12 +18,13 @@ const newBond: Bond = {
   bond_country: '',
   is_copy: false,
   category_ids: null,
-}
+  quality: '',
+};
 
 @Component({
   selector: 'ba-edit-bonds',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss'],
 })
 export class BondsEditComponent implements OnInit {
   public bondForm = new FormGroup({
@@ -123,7 +124,7 @@ export class BondsEditComponent implements OnInit {
     if (!price || this.bondForm.controls.prices.value.includes(price)) {
       return;
     }
-    this.bondForm.controls._price.patchValue('')
+    this.bondForm.controls._price.patchValue('');
     this.bondForm.controls.prices.patchValue([...this.bondForm.value.prices, price]);
   }
 
@@ -138,11 +139,11 @@ export class BondsEditComponent implements OnInit {
     if (!event.target.value) {
       return;
     }
-    const categoryId = parseInt(event.target.value, 10)
+    const categoryId = parseInt(event.target.value, 10);
     if (this.bondForm.controls.category_ids.value.includes(categoryId)) {
       return;
     }
-    this.bondForm.controls.category_ids.patchValue([...this.bondForm.value.category_ids, categoryId])
+    this.bondForm.controls.category_ids.patchValue([...this.bondForm.value.category_ids, categoryId]);
   }
 
   private removeCategory = (categoryId: number) => {

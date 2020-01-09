@@ -1,0 +1,48 @@
+<clr-datagrid [(clrDgSelected)]="toImport" [clrDgRowSelection]="true">
+  <clr-dg-column>Название</clr-dg-column>
+  <clr-dg-column>Описание</clr-dg-column>
+  <clr-dg-column>Цены</clr-dg-column>
+  <clr-dg-column>Скидка действует до</clr-dg-column>
+  <clr-dg-column>Количество в наличии</clr-dg-column>
+  <clr-dg-column>Тип Товара</clr-dg-column>
+  <clr-dg-column>Валюта</clr-dg-column>
+  <clr-dg-column>Номинал</clr-dg-column>
+  <clr-dg-column>Серия Банкноты</clr-dg-column>
+  <clr-dg-column>Номер Банкноты</clr-dg-column>
+  <clr-dg-column>Страна Эмитент</clr-dg-column>
+  <clr-dg-column>Копия?</clr-dg-column>
+  <clr-dg-column>Состояние</clr-dg-column>
+  <clr-dg-column>Категории</clr-dg-column>
+  <clr-dg-column>Выводить на сайте?</clr-dg-column>
+
+  <clr-dg-row *ngFor="let bond of bonds" [clrDgItem]="bond">
+    <clr-dg-cell>{{bond.title || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.description || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="bond.prices || bond.prices.length === 0">Н/Д</span>
+      <span class="badge" *ngFor="let price of bond.prices">{{price}}</span>
+    </clr-dg-cell>
+    <clr-dg-cell>{{bond.valid_till || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.amount || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.product_type || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.bond_currency || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.bond_value || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.bond_serial || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.bond_number || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="bond.bond_country || bond.bond_country.length === 0">Н/Д</span>
+      <span class="badge" *ngFor="let country of bond.bond_country">{{country}}</span>
+    </clr-dg-cell>
+    <clr-dg-cell>{{bond.is_copy || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>{{bond.quality || 'Н/Д'}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span *ngIf="bond.category_ids || bond.category_ids.length === 0">Н/Д</span>
+      <span class="badge" *ngFor="let id of bond.category_ids">{{getCategory(id).title}}</span>
+    </clr-dg-cell>
+    <clr-dg-cell>{{bond.available || 'Н/Д'}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>Всего {{bonds.length}}</clr-dg-footer>
+</clr-datagrid>
+
+<button (click)="import()" class="btn btn-primary">Импортировать</button>

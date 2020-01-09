@@ -19,7 +19,6 @@ export class BondsComponent implements OnInit {
   ngOnInit() { }
 
   private handleFileInput = async (event) => {
-    console.log(event);
     await this.handleFiles(event.target.files);
   }
   private handleFiles = async (files) => {

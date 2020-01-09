@@ -15,8 +15,6 @@ export class ContactsTableComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.contacts)
-  }
+  ngOnInit() { }
 
 }
